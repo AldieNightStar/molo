@@ -43,6 +43,19 @@ def readSpecs(lines: List[str]) -> List[str]:
         newLines.append(line)
     return specs, lines
 
+def readImportsFromSpecs(specs: List[str]) -> Tuple[List[str], List[str]]:
+    "read specs and excludes imports. Returns imported lines and new specs"
+    imports = []
+    newSpecs = []
+    lines = []
+    for spec in specs:
+        imp = detectSpecIsImport(spec)
+        if imp: imports.append(imp); continue
+        newSpecs.append(spec)
+    # Process imports by importing files from that list and adding everything to lines array
+    # TODO .......
+    return imports, newSpecs
+
 def compileFile(src: str) -> Tuple[str, List[str]]:
     lines = src.splitlines()
     # Register all needed stuff
@@ -89,8 +102,17 @@ def makeChapterAsScene(chapterName: str, text: str) -> str:
 
 def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
     "Replaces lines with commands"
-    arr: List[Command] = []
+    arr: List[str] = []
+    jsMode = False
     for line in chapterLines:
+        if jsMode:
+            if line == ".endjs": arr.append("}"); jsMode = False; continue
+            arr.append("    " + line)
+            continue
+        if line == ".js":
+            jsMode = True
+            arr.append("{")
+            continue
         # Parse command and render by command registry
         command = detectCommand(line)
         if command: arr.append(creg.renderCommand(command)); continue
@@ -112,7 +134,11 @@ def detectSpecIsRegisterCommand(spec: str):
     arr = spec.split(" ", 1)
     if len(arr) < 2: return None
     return arr
-    
+
+def detectSpecIsImport(spec: str):
+    if not spec.startswith("import "): return None
+    return spec[7:]
+
 
 def detectCommand(line: str) -> Command:
     if len(line) < 2: return

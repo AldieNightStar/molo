@@ -1,0 +1,15 @@
+$import testfiles/includes.txt
+
+:main
+    Hello there
+    == Comment
+    Hi sir
+    .say "Juston"
+    .js
+        // Hello world!
+        console.log("Everything is ok");
+    .endjs
+
+:sober
+    This is snowy land
+    As is

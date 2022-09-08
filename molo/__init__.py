@@ -1,0 +1,1 @@
+from molo.compiler import compileFile as compile
