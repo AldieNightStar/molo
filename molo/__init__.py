@@ -1,1 +1,1 @@
-from molo.compiler import compileFile as compile
+from molo.compiler import compile
