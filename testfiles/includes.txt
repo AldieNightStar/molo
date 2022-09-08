@@ -1,1 +1,4 @@
 $register say window.alert($$);
+
+:fuck
+I am fucker

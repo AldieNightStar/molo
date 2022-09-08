@@ -3,12 +3,12 @@ from molo.data import *
 from molo.processors import *
 
 def readImportsFromSpecs(creg: CommandRegistry, specs: List[str]) -> Tuple[List[str], List[str]]:
-    "read specs and excludes imports. Returns: lines, specs"
+    "read specs and excludes imports. Returns: importedFilesSource, specs"
     imports: List[str] = []
     newSpecs: List[str] = []
     array: List[str] = []
     # Filter all import to imports array
-    # Rest push to newSpecs
+    # Rest specs push to newSpecs
     for spec in specs:
         imp = detectSpecIsImport(spec)
         if imp: imports.append(imp); continue
@@ -26,8 +26,9 @@ def readImportsFromSpecs(creg: CommandRegistry, specs: List[str]) -> Tuple[List[
 def compile(src: str) -> Tuple[str, List[str], CommandRegistry]:
     "Reads source and returns: compiledSource, specs, commandRegistry"
     chapters, specs, creg = readFile(src)
+    srcs, specs = readImportsFromSpecs(creg, specs)
     compiledSrc, specs = compileFile(chapters, specs, creg)
-    return compiledSrc, specs, creg
+    return "\n".join(("\n".join(srcs), compiledSrc)), specs, creg
 
 def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandRegistry) -> Tuple[
                                                                                             str,
