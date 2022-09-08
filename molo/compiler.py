@@ -2,6 +2,27 @@ from typing import Dict, List, Tuple
 from molo.data import *
 from molo.processors import *
 
+def readImportsFromSpecs(creg: CommandRegistry, specs: List[str]) -> Tuple[List[str], List[str]]:
+    "read specs and excludes imports. Returns: lines, specs"
+    imports: List[str] = []
+    newSpecs: List[str] = []
+    array: List[str] = []
+    # Filter all import to imports array
+    # Rest push to newSpecs
+    for spec in specs:
+        imp = detectSpecIsImport(spec)
+        if imp: imports.append(imp); continue
+        newSpecs.append(spec)
+    # Process imports by importing files from that list and adding everything to lines array
+    # Command Registries will be merged to current one
+    for imp in imports:
+        with open(imp) as f:
+            src = f.read()
+            compiled, specs, creg2 = compile(src)
+            array.append(compiled)
+            creg.merge(creg2)
+    return array, newSpecs
+
 def compile(src: str) -> Tuple[str, List[str], CommandRegistry]:
     "Reads source and returns: compiledSource, specs, commandRegistry"
     chapters, specs, creg = readFile(src)

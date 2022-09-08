@@ -1,18 +1,6 @@
 from typing import Dict, List, Tuple
-from molo.data import *
 
-def readImportsFromSpecs(specs: List[str]) -> Tuple[List[str], List[str]]:
-    "read specs and excludes imports. Returns: lines, specs"
-    imports = []
-    newSpecs = []
-    lines = []
-    for spec in specs:
-        imp = detectSpecIsImport(spec)
-        if imp: imports.append(imp); continue
-        newSpecs.append(spec)
-    # Process imports by importing files from that list and adding everything to lines array
-    # TODO .......
-    return imports, newSpecs
+from molo.data import *
 
 def readSpecs(lines: List[str]) -> List[str]:
     newLines: List[str] = []
@@ -49,7 +37,6 @@ def detectSpecIsRegisterCommand(spec: str):
 def detectSpecIsImport(spec: str):
     if not spec.startswith("import "): return None
     return spec[7:]
-
 
 def detectCommand(line: str) -> Command:
     if len(line) < 2: return
