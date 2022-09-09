@@ -10,5 +10,6 @@ if __name__ == "__main__":
             return
         filename = args[0]
         chapters, creg = compile(filename)
-        print(chapters)
+        with open(filename + ".js", 'w') as f:
+            f.write(chapters)
     _f()
