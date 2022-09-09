@@ -1,4 +1,4 @@
-# Molo - Compile for visual novels
+# Molo - Compiler for visual novels
 
 # Language & Usage
 ```
@@ -16,15 +16,14 @@ Some text etc
 ```
 
 # How to use compiled code
-* Include to your browser/nodejs/UI app
-* Then use code below to start
-```js
-// It will start to use your API with mprint
-molostart();
-```
+* Code will compile using template provided api and functions
+* Then result js filed need to be connected to your browser/UI app
+* Then `molostart()` need to be runned
 
 # Basic functions it uses
-* This functions need to be implemented by your graphic engine/browser
+* This functions need to be implemented by your template
+* The rest are template specific
+   * To add new function - use `$register func ...` command
 ```js
 // Clears everything up
 mclear();
@@ -43,7 +42,7 @@ mprint(text);
 ```
 
 # Custom commands
-* Config commands starts with `$` before first chapter token. At runtime they are not exist
+* Config commands starts with `$`. At runtime they are not exist
 * To register _custom command_ add register command
     * `$$` will be replaced with arguments. Sample: `.log "Hello world", 123, "abc"`
     * Syntax: `$register (name of the command) (js string up to '\n' symbol)`
@@ -53,7 +52,7 @@ $register лог console.log($$);
 $register debug console.log("DEBUG", $$);
 ```
 
-# Include other stories/js files
+# Include other stories
 ```
 $import myfile.txt
 $import ua_commands.txt
