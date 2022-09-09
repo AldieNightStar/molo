@@ -7,6 +7,6 @@ if __name__ == "__main__":
         if len(args) < 1:
             print("Please enter file name")
         filename = args[0]
-        chapters, specs, creg = compile(filename)
+        chapters, creg = compile(filename)
         print(chapters)
     _f()

@@ -3,15 +3,13 @@ from molo.data import *
 from molo.processors import *
 from molo.reader import readFileToLinesWithImports
 
-def compile(filename: str) -> Tuple[str, List[str], CommandRegistry]:
+def compile(filename: str) -> Tuple[str, CommandRegistry]:
     "Reads source and returns: compiledSource, specs, commandRegistry"
     chapters, specs, creg = readFile(filename)
-    compiledSrc, specs = compileFile(chapters, specs, creg)
-    return compiledSrc, specs, creg
+    compiledSrc = compileFile(chapters, specs, creg)
+    return compiledSrc, creg
 
-def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandRegistry) -> Tuple[
-                                                                                            str,
-                                                                                            List[str]]:
+def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandRegistry) -> Tuple[str]:
     "Compiles file into a string and return: source, specs"
     # Process all the chapters
     processedChapters = processAllChapters(creg, chapters)
@@ -20,7 +18,7 @@ def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandR
     for name, text in processedChapters.items():
         sb.append(makeChapterAsScene(name, text))
     # Concatenate all the scene functions into one string
-    return ("\n".join(sb), specs)
+    return "\n".join(sb)
 
 def readFile(filename: str) -> Tuple[
                             Dict[str, List[str]],

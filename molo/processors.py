@@ -5,13 +5,9 @@ from molo.data import *
 def readSpecs(lines: List[str]) -> List[str]:
     newLines: List[str] = []
     specs: List[str] = []
-    specMode = True
     for line in lines:
-        if specMode:
-            spec = detectSpecial(line)
-            if spec: specs.append(spec); continue
-            if detectChapter(line):
-                specMode = False
+        spec = detectSpecial(line)
+        if spec: specs.append(spec); continue
         newLines.append(line)
     return specs, lines
 

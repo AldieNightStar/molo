@@ -17,6 +17,3 @@ class CommandRegistry:
         return val.replace("$$", cmd.args)
     def register(self, name: str, val: str):
         self.reg[name] = val
-    def merge(self, creg):
-        for name, val in creg.reg.items():
-            self.reg[name] = val
