@@ -14,7 +14,8 @@ def readJsFromSpecs(specs: List[str]) -> List[str]:
             arr.append(f.read())
     return arr
 
-def readSpecs(lines: List[str]) -> List[str]:
+def readSpecs(lines: List[str]) -> Tuple[List[str], List[str]]:
+    "Reads specs from lines and remove. Returns: lines, specs"
     newLines: List[str] = []
     specs: List[str] = []
     for line in lines:
@@ -35,14 +36,14 @@ def makeChapterAsScene(chapterName: str, text: str) -> str:
     tabtext = "    " + text.replace("\n", "\n    ")
     return f"mscene(`{chapterName}`, async function() {{\n{tabtext}\n}});"
 
-def detectSpecIsRegisterCommand(spec: str):
+def detectSpecIsRegisterCommand(spec: str) -> str:
     if not spec.startswith("register "): return
     spec = spec[9:] # Skip "register "
     arr = spec.split(" ", 1)
     if len(arr) < 2: return None
     return arr
 
-def detectSpecIsImport(spec: str):
+def detectSpecIsImport(spec: str) -> str:
     if not spec.startswith("import "): return None
     return spec[7:]
 
