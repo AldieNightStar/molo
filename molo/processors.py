@@ -2,6 +2,18 @@ from typing import Dict, List, Tuple
 
 from molo.data import *
 
+def readJsFromSpecs(specs: List[str]) -> List[str]:
+    jsFiles = []
+    arr = []
+    for spec in specs:
+        if spec.startswith("js "):
+            jsFiles.append(spec[3:])
+            continue
+    for jsFile in jsFiles:
+        with open(jsFile) as f:
+            arr.append(f.read())
+    return arr
+
 def readSpecs(lines: List[str]) -> List[str]:
     newLines: List[str] = []
     specs: List[str] = []

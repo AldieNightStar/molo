@@ -3,3 +3,4 @@ $import testfiles/includes.txt
 :main
     Test text
     .log "Test!"
+    .xyz

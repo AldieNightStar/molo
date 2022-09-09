@@ -5,11 +5,11 @@ from molo.reader import readFileToLinesWithImports
 
 def compile(filename: str) -> Tuple[str, CommandRegistry]:
     "Reads source and returns: compiledSource, commandRegistry"
-    chapters, creg = readFile(filename)
-    compiledSrc = compileFile(chapters, creg)
+    chapters, specs, creg = readFile(filename)
+    compiledSrc = compileFile(chapters, specs, creg)
     return compiledSrc, creg
 
-def compileFile(chapters: Dict[str, List[str]], creg: CommandRegistry) -> str:
+def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandRegistry) -> str:
     "Compiles file into a string and return: source"
     # Process all the chapters
     processedChapters = processAllChapters(creg, chapters)
@@ -17,11 +17,17 @@ def compileFile(chapters: Dict[str, List[str]], creg: CommandRegistry) -> str:
     sb: List[str] = []
     for name, text in processedChapters.items():
         sb.append(makeChapterAsScene(name, text))
+    # Find $js commands and import js files if needed
+    jsFiles = readJsFromSpecs(specs)
+    # Concatenate jsFiles
+    jsFiles = "\n".join(jsFiles)
     # Concatenate all the scene functions into one string
-    return "\n".join(sb)
+    scenes = "\n".join(sb)
+    # Concat js files and scenes
+    return jsFiles + "\n" + scenes
 
-def readFile(filename: str) -> Tuple[Dict[str, List[str]],CommandRegistry]:
-    "reads file and returns: chapters, commandRegistry"
+def readFile(filename: str) -> Tuple[Dict[str, List[str]], List[str],CommandRegistry]:
+    "reads file and returns: chapters, specs, commandRegistry"
     lines = readFileToLinesWithImports(filename)
     # Register all needed stuff
     commandRegistry = CommandRegistry()
@@ -52,4 +58,4 @@ def readFile(filename: str) -> Tuple[Dict[str, List[str]],CommandRegistry]:
             chapterLines.append(line)
     if len(chapterLines) > 0:
         chapters[currentChapter] = chapterLines
-    return chapters, commandRegistry
+    return chapters, specs, commandRegistry

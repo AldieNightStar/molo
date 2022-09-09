@@ -69,7 +69,7 @@ $register лог console.log($$);
 $register debug console.log("DEBUG", $$);
 ```
 
-# Include other stories
+# Include other stories/js files
 ```
 $import myfile.txt
 $import ua_commands.txt
