@@ -1,34 +1,13 @@
 from typing import Dict, List, Tuple
 from molo.data import *
 from molo.processors import *
+from molo.reader import readFileToLinesWithImports
 
-def readImportsFromSpecs(creg: CommandRegistry, specs: List[str]) -> Tuple[List[str], List[str]]:
-    "read specs and excludes imports. Returns: importedFilesSource, specs"
-    imports: List[str] = []
-    newSpecs: List[str] = []
-    array: List[str] = []
-    # Filter all import to imports array
-    # Rest specs push to newSpecs
-    for spec in specs:
-        imp = detectSpecIsImport(spec)
-        if imp: imports.append(imp); continue
-        newSpecs.append(spec)
-    # Process imports by importing files from that list and adding everything to lines array
-    # Command Registries will be merged to current one
-    for imp in imports:
-        with open(imp) as f:
-            src = f.read()
-            compiled, specs, creg2 = compile(src)
-            array.append(compiled)
-            creg.merge(creg2)
-    return array, newSpecs
-
-def compile(src: str) -> Tuple[str, List[str], CommandRegistry]:
+def compile(filename: str) -> Tuple[str, List[str], CommandRegistry]:
     "Reads source and returns: compiledSource, specs, commandRegistry"
-    chapters, specs, creg = readFile(src)
-    srcs, specs = readImportsFromSpecs(creg, specs)
+    chapters, specs, creg = readFile(filename)
     compiledSrc, specs = compileFile(chapters, specs, creg)
-    return "\n".join(("\n".join(srcs), compiledSrc)), specs, creg
+    return compiledSrc, specs, creg
 
 def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandRegistry) -> Tuple[
                                                                                             str,
@@ -43,12 +22,12 @@ def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandR
     # Concatenate all the scene functions into one string
     return ("\n".join(sb), specs)
 
-def readFile(src: str) -> Tuple[
+def readFile(filename: str) -> Tuple[
                             Dict[str, List[str]],
                             List[str],
                             CommandRegistry]:
     "reads file and returns: chapters, specs, commandRegistry"
-    lines = src.splitlines()
+    lines = readFileToLinesWithImports(filename)
     # Register all needed stuff
     commandRegistry = CommandRegistry()
     currentChapter: str = None

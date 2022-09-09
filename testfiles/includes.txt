@@ -1,4 +1,5 @@
 $register say window.alert($$);
+$register лог console.log($$);
 
 :fuck
 I am fucker
