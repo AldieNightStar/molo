@@ -9,7 +9,8 @@ if __name__ == "__main__":
             print("Please enter file name")
             return
         filename = args[0]
-        chapters, creg = compile(filename)
+        chapters, _ = compile(filename)
         with open(filename + ".js", 'w') as f:
             f.write(chapters)
+        print("OK")
     _f()

@@ -32,10 +32,6 @@ def readCommandsFromSpecs(reg: CommandRegistry, specs: List[str]) -> List[str]:
         newspecs.append(spec)
     return newspecs
 
-def makeChapterAsScene(chapterName: str, text: str) -> str:
-    tabtext = "    " + text.replace("\n", "\n    ")
-    return f"mscene(`{chapterName}`, async function() {{\n{tabtext}\n}});"
-
 def detectSpecIsRegisterCommand(spec: str) -> str:
     if not spec.startswith("register "): return
     spec = spec[9:] # Skip "register "
@@ -69,32 +65,3 @@ def detectComment(line: str) -> bool:
 def detectChapter(line: str) -> str:
     if line.startswith(":"):
         return line[1:]
-
-def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
-    "Replaces lines with commands"
-    arr: List[str] = ["mclear();"]
-    jsMode = False
-    for line in chapterLines:
-        # Js mode allows to add { ... } blocks of js code
-        if jsMode:
-            if line == ".endjs": arr.append("}"); jsMode = False; continue
-            arr.append("    " + line)
-            continue
-        if line == ".js":
-            jsMode = True
-            arr.append("{")
-            continue
-        # Parse command and render by command registry
-        command = detectCommand(line)
-        if command: arr.append(creg.renderCommand(command)); continue
-        # If no command etc, then add default print command
-        # TODO: replace "`" to "'" symbols
-        arr.append(f"mprint(`{line}`);")
-    return arr
-
-def processAllChapters(creg: CommandRegistry, chapters: Dict[str, List[str]]) -> Dict[str, str]:
-    newChapters: Dict[str, List[str]] = {}
-    for name, chapterLines in chapters.items():
-        # Replace chapter lines with commands
-        newChapters[name] = "\n".join(processChapter(creg, chapterLines))
-    return newChapters

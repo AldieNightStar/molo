@@ -2,7 +2,7 @@ from typing import Dict, List, Tuple
 from molo.data import *
 from molo.processors import *
 from molo.reader import readFileToLinesWithImports
-from molo.scenes import parseChapters
+from molo.chapter import makeChapterAsScene, parseChapters, processAllChapters
 
 import os.path
 
