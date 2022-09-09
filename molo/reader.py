@@ -13,7 +13,6 @@ def readFileToLinesWithImports(filename) -> List[str]:
     for line in lines:
         imp = _detectImport(line)
         if imp:
-            if imp[-1] == "\n": imp = imp[:len(imp)-1]
             arr.extend(readFileToLines(imp))
             continue
         arr.append(line)

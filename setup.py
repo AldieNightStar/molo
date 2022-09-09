@@ -8,5 +8,6 @@ s.setup(
     install_requires=[
         # "lispy @ git+https://github.com/AldieNightStar/lispy.git"
     ],
+    scripts=["moloc.py"],
     packages=["molo"]
 )

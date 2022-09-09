@@ -46,7 +46,6 @@ mprint(text);
 * Config commands starts with `$` before first chapter token. At runtime they are not exist
 * To register _custom command_ add register command
     * `$$` will be replaced with arguments. Sample: `.log "Hello world", 123, "abc"`
-    * `##` will be replaced with arguments but inside `" "` symbols with `"` escapes
     * Syntax: `$register (name of the command) (js string up to '\n' symbol)`
 ```
 $register log console.log($$);
@@ -68,6 +67,3 @@ $js api.js
 $js test.js
 $js super_commands.js
 ```
-
-# Global files
-* _Global files_ are the files which are in the root folder with compiler. Like `global.txt` and `global.js` which is embedding into each story file outputs

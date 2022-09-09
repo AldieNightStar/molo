@@ -1,2 +1,2 @@
 #!/bin/sh
-python pub_compiler.py testfiles/main.txt
+python moloc.py testfiles/main.txt
