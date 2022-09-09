@@ -1,6 +1,7 @@
 #!/bin/env python
 from time import sleep
 from molo import compile
+import io
 import sys
 
 USAGE = """moloc.py [filename] [auto]
@@ -16,7 +17,7 @@ def auto(filename):
 
 def buildFile(filename):
     chapters, _ = compile(filename)
-    with open(filename + ".js", 'w') as f:
+    with io.open(filename + ".js", 'w', encoding="UTF-8") as f:
         f.write(chapters)
 
 if __name__ == "__main__":

@@ -1,9 +1,14 @@
 $import api.txt
 
 :main
-    You are in home
-    .button "Go outdoor", "outdoor"
+    .js
+        mgoto("дім")
+    .endjs
 
-:outdoor
-    You are outdoor
-    .button "Go back", "main"
+:дім
+    Ти знаходишся в дома
+    .кнопка "Підійти до вікна", "вікно"
+
+:вікно
+    У вікні нічого цікавого
+    .кнопка "Відійти назад", "дім"
