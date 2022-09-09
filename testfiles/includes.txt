@@ -1,3 +1,0 @@
-$register log console.log($$)
-$js testfiles/test.js
-$register xyz xyz();

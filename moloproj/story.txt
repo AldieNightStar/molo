@@ -1,0 +1,9 @@
+$import api.txt
+
+:main
+    You are in home
+    .button "Go outdoor", "outdoor"
+
+:outdoor
+    You are outdoor
+    .button "Go back", "main"

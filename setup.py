@@ -9,5 +9,6 @@ s.setup(
         # "lispy @ git+https://github.com/AldieNightStar/lispy.git"
     ],
     scripts=["moloc.py"],
-    packages=["molo"]
+    packages=["molo"],
+    package_data={"": ["*.js"]}
 )

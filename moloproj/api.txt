@@ -1,0 +1,2 @@
+$register button buttonX($$);
+$register кнопка buttonX($$);
