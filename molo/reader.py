@@ -1,9 +1,10 @@
+import io
 from types import FunctionType
 from typing import List
 
 
 def readFileToLines(filename) -> List[str]:
-    with open(filename) as f:
+    with io.open(filename, encoding="UTF-8") as f:
         return [_noReturnAtEnd(ln) for ln in f.readlines()]
 
 def readFileToLinesWithImports(filename) -> List[str]:
