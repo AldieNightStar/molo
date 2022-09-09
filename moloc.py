@@ -8,7 +8,7 @@ USAGE = """moloc.py [filename] [auto]
     moloc.py filename auto  - rebuild file every 5 seconds
 """
 
-def watch(filename):
+def auto(filename):
     while True:
         sleep(5)
         print("Rebuild...")
@@ -26,8 +26,8 @@ if __name__ == "__main__":
             print("Please enter file name")
             return
         filename = args[0]
-        if "watch" in args:
-            watch(filename)
+        if "auto" in args:
+            auto(filename)
         else:
             buildFile(filename)
             print("OK")
