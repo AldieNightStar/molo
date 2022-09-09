@@ -16,14 +16,14 @@ Some text etc
 ```
 
 # How to use compiled code
-* Code will compile using template provided api and functions
-* Then result js filed need to be connected to your browser/UI app
+* Code will be compiled using template-provided api and functions
+* Then resulted js file need to be connected to your _browser_ OR _UI app_
 * Then `molostart()` need to be runned
 
 # Basic functions it uses
 * This functions need to be implemented by your template
-* The rest are template specific
-   * To add new function - use `$register func ...` command
+* The rest are template/api specific
+   * To add new functions - use `$register func ...` command
 ```js
 // Clears everything up
 mclear();
@@ -35,6 +35,7 @@ mprint(text);
 # JavaScript inline
 * Just add `.js` line and write on next line js code up to `.endjs` line.
     * Warning: No arguments needed for `.js` or `.endjs`. Otherwise fail
+* Variables created with inline js WILL NOT save, so make sure you have variable storage. For example global `object` with game stuff
 ```
 .js
     console.log("Hello!");
@@ -43,7 +44,7 @@ mprint(text);
 
 # Custom commands
 * Config commands starts with `$`. At runtime they are not exist
-* To register _custom command_ add register command
+* To register _custom command_ do: ...
     * `$$` will be replaced with arguments. Sample: `.log "Hello world", 123, "abc"`
     * Syntax: `$register (name of the command) (js string up to '\n' symbol)`
 ```
