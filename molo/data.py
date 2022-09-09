@@ -9,7 +9,11 @@ class Command:
 
 class CommandRegistry:
     def __init__(self):
-        self.reg: Dict[str, str] = {}
+        self.reg: Dict[str, str] = {
+            # Basic functions
+            "goto": "mgoto($$);",
+            "перейти": "mgoto($$);"
+        }
     def renderCommand(self, cmd: Command) -> str:
         val = self.reg.get(cmd.name, None)
         if val == None: return f"// no such function: {cmd.name}"

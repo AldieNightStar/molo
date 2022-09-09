@@ -71,9 +71,10 @@ def detectChapter(line: str) -> str:
 
 def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
     "Replaces lines with commands"
-    arr: List[str] = []
+    arr: List[str] = ["mclear();"]
     jsMode = False
     for line in chapterLines:
+        # Js mode allows to add { ... } blocks of js code
         if jsMode:
             if line == ".endjs": arr.append("}"); jsMode = False; continue
             arr.append("    " + line)

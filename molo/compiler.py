@@ -3,11 +3,19 @@ from molo.data import *
 from molo.processors import *
 from molo.reader import readFileToLinesWithImports
 
+import os.path
+
+THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
+BASIC_JS_FILE_NAME = THIS_FOLDER + "/basic.js"
+
 def compile(filename: str) -> Tuple[str, CommandRegistry]:
     "Reads source and returns: compiledSource, commandRegistry"
     chapters, specs, creg = readFile(filename)
     compiledSrc = compileFile(chapters, specs, creg)
-    return compiledSrc, creg
+    # Add basic api to compiled source
+    with open(BASIC_JS_FILE_NAME) as f:
+        basicApi = f.read() + "\n"
+        return basicApi + compiledSrc, creg
 
 def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandRegistry) -> str:
     "Compiles file into a string and return: source"

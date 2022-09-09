@@ -13,15 +13,6 @@ Another text
 
 :chapter3
 Some text etc
-
-::special_chapter
-== Chapters with "::" prefix is a special chapters
-==   which makes text print wait on "next" link press
-This will be waited for next
-And this one too
-And this too
-This is the last
-== Link "next" adds at the end of printed text. So only then other commands could be printed
 ```
 
 # How to use compiled code
@@ -40,12 +31,6 @@ mclear();
 
 // Print function
 mprint(text);
-
-// Print function with next line
-mprintln(text);
-
-// Add link after printed text (no nextline)
-mlink(text, onclick);
 ```
 
 # JavaScript inline
