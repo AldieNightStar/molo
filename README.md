@@ -67,3 +67,6 @@ $js api.js
 $js test.js
 $js super_commands.js
 ```
+
+# Template
+* Please, use template `moloproj` for your new projects
