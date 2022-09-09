@@ -4,13 +4,13 @@ from molo.processors import *
 from molo.reader import readFileToLinesWithImports
 
 def compile(filename: str) -> Tuple[str, CommandRegistry]:
-    "Reads source and returns: compiledSource, specs, commandRegistry"
-    chapters, specs, creg = readFile(filename)
-    compiledSrc = compileFile(chapters, specs, creg)
+    "Reads source and returns: compiledSource, commandRegistry"
+    chapters, creg = readFile(filename)
+    compiledSrc = compileFile(chapters, creg)
     return compiledSrc, creg
 
-def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandRegistry) -> Tuple[str]:
-    "Compiles file into a string and return: source, specs"
+def compileFile(chapters: Dict[str, List[str]], creg: CommandRegistry) -> str:
+    "Compiles file into a string and return: source"
     # Process all the chapters
     processedChapters = processAllChapters(creg, chapters)
     # Now make all the chapters 'mscene' callbacks
@@ -20,11 +20,8 @@ def compileFile(chapters: Dict[str, List[str]], specs: List[str], creg: CommandR
     # Concatenate all the scene functions into one string
     return "\n".join(sb)
 
-def readFile(filename: str) -> Tuple[
-                            Dict[str, List[str]],
-                            List[str],
-                            CommandRegistry]:
-    "reads file and returns: chapters, specs, commandRegistry"
+def readFile(filename: str) -> Tuple[Dict[str, List[str]],CommandRegistry]:
+    "reads file and returns: chapters, commandRegistry"
     lines = readFileToLinesWithImports(filename)
     # Register all needed stuff
     commandRegistry = CommandRegistry()
@@ -55,4 +52,4 @@ def readFile(filename: str) -> Tuple[
             chapterLines.append(line)
     if len(chapterLines) > 0:
         chapters[currentChapter] = chapterLines
-    return chapters, specs, commandRegistry
+    return chapters, commandRegistry
