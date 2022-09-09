@@ -1,4 +1,4 @@
-# Molor - Compile for visual novels
+# Molo - Compile for visual novels
 
 # Language & Usage
 ```
