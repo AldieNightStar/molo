@@ -34,11 +34,17 @@ def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
     arr: List[str] = ["mclear();"]
     jsMode = False
     for line in chapterLines:
+        # Lines starting with "*" is JS code as well
+        if line.startswith("*") and not line.startswith("**"):
+            jsline = line[1:].lstrip()
+            arr.append(jsline)
+            continue
         # Js mode allows to add { ... } blocks of js code
         if jsMode:
             if line == ".endjs": arr.append("}"); jsMode = False; continue
             arr.append("    " + line)
             continue
+        # .js command allows to set jsMode
         if line == ".js":
             jsMode = True
             arr.append("{")
@@ -47,7 +53,7 @@ def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
         command = detectCommand(line)
         if command: arr.append(creg.renderCommand(command)); continue
         # If no command etc, then add default print command
-        # TODO: replace "`" to "'" symbols
+        line = line.replace("`", "'")
         arr.append(f"mprint(`{line}`);")
     return arr
 

@@ -27,13 +27,6 @@ function button(name, onclick) {
     el.appendChild(b);
 }
 
-window.store = {}
-music = new Audio();
-
-window.вкл = true;
-window.выкл = false;
-window.вимк = false;
-
 function buttonX(name, sceneToGo) {
     button(name, () => mgoto(sceneToGo));
 }
@@ -63,30 +56,4 @@ function playMusic(src, vol=.5) {
 function stopMusic() {
     music.pause();
     music.currentTime = 0;
-}
-
-function mstore_set(name, value) {
-    window.store[name] = value;
-}
-
-function mstore_get(name) {
-    return window.store[name]
-}
-
-function mstore_switch(name) {
-    let val = window.store[name];
-    if (typeof(val) !== "boolean") {
-        val = true;
-    }
-    val = !val;
-    window.store[name] = val;
-}
-
-function mstore_count(name, num=1) {
-    let val = window.store[name];
-    if (typeof(val) !== "number") {
-        val = 0;
-    }
-    val += num;
-    window.store[name] = val;
 }

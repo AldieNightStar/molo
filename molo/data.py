@@ -22,7 +22,7 @@ class CommandRegistry:
         val = self.reg.get(cmd.name, None)
         if val == None:
             print(f"WARN: Function '{cmd.name} is not registered.")
-            return f"// no such function: {cmd.name}"
+            return f"mprint(\"ERR: no such function: {cmd.name}\"); // ERROR"
         return val.replace("$$", cmd.args)
     def register(self, name: str, val: str):
         self.reg[name] = val

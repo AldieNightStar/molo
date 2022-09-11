@@ -3,48 +3,16 @@ $js api/api.js
 $register button buttonX($$);
 $register кнопка buttonX($$);
 
-$register buttonjs button($$);
-
 $register image addImage($$);
 $register картинка addImage($$);
 
 $register music playMusic($$);
+$register музика playMusic($$);
 $register музыка playMusic($$);
 
 $register stopmusic stopMusic();
-$register стоп-музыка stopMusic();
 $register тихо stopMusic();
-
-$register if if ($$) {
-$register якщо if ($$) {
-$register если if ($$) {
-
-$register elseif } else if ($$) {
-$register иначе-если } else if ($$) {
-$register інакше-якщо } else if ($$) {
-
-$register else } else {
-$register інакше } else {
-$register иначе } else {
-
-$register end }
-$register кінець }
-$register конец }
-
-$register set mstore_set($$);
-$register выбрать mstore_set($$);
-$register вибрати mstore_set($$);
-
-$register switch mstore_switch($$);
-$register міняти mstore_switch($$);
-$register менять mstore_switch($$);
-
-$register count mstore_count($$);
-$register рахувати mstore_count($$);
-$register считать mstore_count($$);
 
 $register continue await printContinue($$);
 $register продовж await printContinue($$);
 $register подолж await printContinue($$);
-
-$register eval $$

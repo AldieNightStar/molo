@@ -1,11 +1,11 @@
-mscenes = {};
-mscene_cur = "main"
+window.mscenes = {};
+window.mscene_cur = "main"
 
 function mgoto(name=mscene_cur) {
-    mscenes[name]();
-    mscene_cur = name;
+    window.mscenes[name]();
+    window.mscene_cur = name;
 }
 
 function molostart() {
-    mscenes[mscene_cur]();
+    window.mscenes[window.mscene_cur]();
 }
