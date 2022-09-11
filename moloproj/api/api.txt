@@ -11,7 +11,14 @@ $register музика playMusic($$);
 $register музыка playMusic($$);
 
 $register stopmusic stopMusic();
-$register тихо stopMusic();
+$register стоп-музика stopMusic();
+$register стоп-музыка stopMusic();
+
+$register sound playSound($$);
+$register звук playSound();
+
+$register stopsound stopSound();
+$register стоп-звук stopSound();
 
 $register continue await printContinue($$);
 $register продовж await printContinue($$);

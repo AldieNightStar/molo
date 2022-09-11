@@ -1,3 +1,6 @@
+window.music = new Audio();
+window.sound = new Audio();
+
 function mprint(text, nextLine=true) {
     let t = document.createElement("span");
     t.innerText = text;
@@ -56,4 +59,17 @@ function playMusic(src, vol=.5) {
 function stopMusic() {
     music.pause();
     music.currentTime = 0;
+}
+
+function playSound(src, vol=.5) {
+    sound.src = src;
+    sound.loop = false;
+    sound.volume = vol;
+    sound.currentTime = 0;
+    sound.play();
+}
+
+function stopSound() {
+    sound.pause();
+    sound.currentTime = 0;
 }

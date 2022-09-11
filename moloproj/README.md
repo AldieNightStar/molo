@@ -9,13 +9,15 @@ Hello there!
 ```
 .button "Click me", "scene2"
 ```
-* Play music (`0.5` means half a volume)
+* Play music/sound (`0.5` means half a volume)
 ```
 .music "audio.mp3", 0.5
+.sound "effect1.wav", 0.5
 ```
-* Stop the music
+* Stop music/sound
 ```
 .stopmusic
+.stopsound
 ```
 * Add image (`100` is percents)
 ```
@@ -51,4 +53,11 @@ playMusic(src, volume=0.5);
 
 // Stop the music
 stopMusic();
+
+
+// Play sound
+playSound(src, vol=.5);
+
+// Stop sound if it too long
+stopSound();
 ```
