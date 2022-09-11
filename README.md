@@ -7,26 +7,46 @@
 * `moloc.py new name` - will create new project based on `moloproj` template
 
 # Language
+
 * Create chapter
 ```
 :chapter_name
 This is chapter
 ```
+
 * Put a comment
 ```
 == This is a comment
 ```
+
 * Add command
 ```
 .command arg1, arg2, "arg3", etc
 ```
 
+* Add js block
+    * `@@variables` are mapped to `window.mvars['variables']` under the hood
+```
+.js
+    console.log(@@count);
+.endjs
+```
+
+* Add js inline
+```
+* console.log(@@count);
+```
+
 # JS API
 ```js
+// Variables storage. Could be used to save game state
+// To make it available, make your stories using (syntax): @@variables
+mvars
+
 // Start compiled story
 molostart();
 
-// Change scene to other
+// Change scene to another
 mgoto(name);
 
 // Update current scene
@@ -38,7 +58,7 @@ mprint(text);
 // Clear the screen
 mclear();
 
-// The rest should be provided by a template
+// The rest functions should be provided by the template
 ```
 
 # How to use compiled code
@@ -66,6 +86,7 @@ $register log console.log($$);
 $register лог console.log($$);
 $register debug console.log("DEBUG", $$);
 ```
+* They could be run like: `log "Hello!", 123, @@variable, etc()`
 
 # Include other stories
 ```
@@ -76,6 +97,7 @@ $import en_commands.txt
 ```
 
 # Include js files
+* They are appended at the start
 ```
 $js api.js
 $js test.js
@@ -85,7 +107,7 @@ $js super_commands.js
 # JavaScript inline
 * Just add `.js` line and write on the next line js code up to `.endjs` line.
     * Warning: No arguments needed for `.js` or `.endjs`. Otherwise fail
-* Variables created with inline js _WILL NOT_ be saved, so make sure you have variable storage. For example global `store` with game stuff
+* Variables created with inline js _WILL NOT_ be saved, so use `@@variables`
 ```
 .js
     console.log("Hello!");

@@ -1,5 +1,6 @@
 window.mscenes = {};
-window.mscene_cur = "main"
+window.mscene_cur = "main";
+window.mvars = {};
 
 function mgoto(name=mscene_cur) {
     window.mscenes[name]();

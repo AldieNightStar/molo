@@ -2,6 +2,7 @@ from typing import Dict, List
 from molo.data import CommandRegistry
 
 from molo.processors import detectChapter, detectCommand, detectComment
+from molo.replacer import replaceVars
 
 def parseChapters(lines: List[str]) -> Dict[str, List[str]]:
     chapters: Dict[str, List[str]] = {}
@@ -37,11 +38,16 @@ def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
         # Lines starting with "*" is JS code as well
         if line.startswith("*") and not line.startswith("**"):
             jsline = line[1:].lstrip()
+            # Replace variables: @@a to window.mvars['a']
+            jsline = replaceVars(jsline)
             arr.append(jsline)
             continue
         # Js mode allows to add { ... } blocks of js code
         if jsMode:
+            # If line is ".endjs" then we ending
             if line == ".endjs": arr.append("}"); jsMode = False; continue
+            # Replace variables: @@a to window.mvars['a']
+            line = replaceVars(line)
             arr.append("    " + line)
             continue
         # .js command allows to set jsMode
