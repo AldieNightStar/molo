@@ -65,7 +65,7 @@ function mstore_get(name) {
 
 function mstore_switch(name) {
     let val = window.store[name];
-    if (!(val instanceof Boolean)) {
+    if (typeof(val) !== "boolean") {
         val = true;
     }
     val = !val;
@@ -74,7 +74,7 @@ function mstore_switch(name) {
 
 function mstore_count(name, num=1) {
     let val = window.store[name];
-    if (!(val instanceof Number)) {
+    if (typeof(val) !== "number") {
         val = 0;
     }
     val += num;

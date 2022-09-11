@@ -2,15 +2,14 @@ $import api/api.txt
 
 :main
     .перейти "дім"
-    .вибрати "ключ", вкл
 
 :дім
     .image "https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg", 100
     Ти знаходишся в дома
-    .рахувати "рахунок", 1
-    .js
-        mprint("Рахунок " + mstore_get("рахунок"));
-    .endjs
+    .міняти "ключ"
+    .якщо mstore_get("ключ")
+        Ключ є
+    .кінець
     .кнопка "Підійти до вікна", "вікно"
     .buttonjs "Message window", () => window.alert("Hello. Am message window :3")
 
