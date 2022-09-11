@@ -1,3 +1,5 @@
+$js api/api.js
+
 $register button buttonX($$);
 $register кнопка buttonX($$);
 
@@ -39,3 +41,7 @@ $register менять mstore_switch($$);
 
 $register goto mgoto($$);
 $register перейти mgoto($$);
+
+$register count mstore_count($$);
+$register рахувати mstore_count($$);
+$register считать mstore_count($$);

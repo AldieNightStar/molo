@@ -34,11 +34,18 @@ Hello there!
 ```
 * Variable operations
 ```
-== Set value to name
+== Assign value
 .set name, value
 
 == Turn on/off the value (boolean)
 .switch name
+
+== Count numeric variables (Each time + 1)
+.count name
+.count name, 1
+
+== Count numeric variables (Each time - 1)
+.count name, -1
 ```
 
 # JavaScript API
@@ -55,8 +62,8 @@ button(caption, onclick);
 // Add button with only goto operation
 button(caption, sceneName);
 
-// Add image
-addImage(src, widthPx);
+// Add image (width in percents)
+addImage(src, width);
 
 // Play music
 playMusic(src, volume=0.5);
@@ -73,4 +80,7 @@ let val = mstore_get(name);
 // If there are bool: change true to false and so forth
 // If there another type it will be converted to false
 mstore_switch(name);
+
+// Count (Each time + num)
+mstore_count(name, num=1)
 ```

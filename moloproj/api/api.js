@@ -1,3 +1,22 @@
+function mprint(text) {
+    let t = document.createElement("span");
+    let br = document.createElement("br");
+    t.innerText = text;
+    let textEl = document.getElementById("text");
+    textEl.appendChild(t);
+    textEl.appendChild(br);
+}
+function mclear() {
+    document.getElementById("text").innerHTML = "";
+}
+function button(name, onclick) {
+    let el = document.getElementById("text");
+    let b = document.createElement("button");
+    b.innerText = name;
+    b.onclick = onclick;
+    el.appendChild(b);
+}
+
 window.store = {}
 music = new Audio();
 
@@ -14,7 +33,7 @@ function addImage(src, size) {
     let br = document.createElement("br");
     img.src = src;
     if (size !== undefined) {
-        img.style.width = "" + size + "px";
+        img.style.width = "" + size + "%";
     }
     let text = document.getElementById("text");
     text.appendChild(img);
@@ -50,5 +69,14 @@ function mstore_switch(name) {
         val = true;
     }
     val = !val;
+    window.store[name] = val;
+}
+
+function mstore_count(name, num=1) {
+    let val = window.store[name];
+    if (!(val instanceof Number)) {
+        val = 0;
+    }
+    val += num;
     window.store[name] = val;
 }

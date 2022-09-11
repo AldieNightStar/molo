@@ -37,27 +37,6 @@
 
 <body>
     <div id="text"><img src="logo.png" width="100%"><button onclick="molostart()">Start</button></div>
-    <script src="api/api.js"></script>
-    <script>
-        function mprint(text) {
-            let t = document.createElement("span");
-            let br = document.createElement("br");
-            t.innerText = text;
-            let textEl = document.getElementById("text");
-            textEl.appendChild(t);
-            textEl.appendChild(br);
-        }
-        function mclear() {
-            document.getElementById("text").innerHTML = "";
-        }
-        function button(name, onclick) {
-            let el = document.getElementById("text");
-            let b = document.createElement("button");
-            b.innerText = name;
-            b.onclick = onclick;
-            el.appendChild(b);
-        }
-    </script>
     <script src='story.txt.js'></script>
 </body>
 

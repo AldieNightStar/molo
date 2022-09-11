@@ -5,6 +5,7 @@ from molo.reader import readFileToLinesWithImports
 from molo.chapter import makeChapterAsScene, parseChapters, processAllChapters
 
 import os.path
+import io
 
 THIS_FOLDER = os.path.dirname(os.path.realpath(__file__))
 BASIC_JS_FILE_NAME = THIS_FOLDER + "/basic.js"
@@ -14,7 +15,7 @@ def compile(filename: str) -> Tuple[str, CommandRegistry]:
     chapters, specs, creg = readFile(filename)
     compiledSrc = compileFile(chapters, specs, creg)
     # Add basic api to compiled source
-    with open(BASIC_JS_FILE_NAME) as f:
+    with io.open(BASIC_JS_FILE_NAME, encoding="UTF-8") as f:
         basicApi = f.read() + "\n"
         return basicApi + compiledSrc, creg
 

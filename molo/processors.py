@@ -1,6 +1,7 @@
 from typing import Dict, List, Tuple
 
 from molo.data import *
+import io
 
 def readJsFromSpecs(specs: List[str]) -> List[str]:
     jsFiles = []
@@ -10,7 +11,7 @@ def readJsFromSpecs(specs: List[str]) -> List[str]:
             jsFiles.append(spec[3:])
             continue
     for jsFile in jsFiles:
-        with open(jsFile) as f:
+        with io.open(jsFile, encoding="UTF-8") as f:
             arr.append(f.read())
     return arr
 
