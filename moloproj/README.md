@@ -54,7 +54,6 @@ playMusic(src, volume=0.5);
 // Stop the music
 stopMusic();
 
-
 // Play sound
 playSound(src, vol=.5);
 
