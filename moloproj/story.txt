@@ -1,9 +1,8 @@
 $import api/api.txt
 
 :main
-    .js
-        mgoto("дім");
-    .endjs
+    .перейти "дім"
+    .вибрати "ключ", вкл
 
 :дім
     .image "https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg", 320

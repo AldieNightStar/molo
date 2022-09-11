@@ -32,6 +32,14 @@ Hello there!
     .button "OK", "oldScene"
 .end
 ```
+* Variable operations
+```
+== Set value to name
+.set name, value
+
+== Turn on/off the value (boolean)
+.switch name
+```
 
 # JavaScript API
 ```js
@@ -55,4 +63,14 @@ playMusic(src, volume=0.5);
 
 // Stop the music
 stopMusic();
+
+// Set variable value
+mstore_set(name, value);
+
+// Get variable value
+let val = mstore_get(name);
+
+// If there are bool: change true to false and so forth
+// If there another type it will be converted to false
+mstore_switch(name);
 ```

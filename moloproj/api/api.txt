@@ -17,6 +17,25 @@ $register if if ($$) {
 $register якщо if ($$) {
 $register если if ($$) {
 
+$register elseif } else if ($$) {
+$register иначе-если } else if ($$) {
+$register інакше-якщо } else if ($$) {
+
+$register else } else {
+$register інакше } else {
+$register иначе } else {
+
 $register end }
 $register кінець }
 $register конец }
+
+$register set mstore_set($$);
+$register выбрать mstore_set($$);
+$register вибрати mstore_set($$);
+
+$register switch mstore_switch($$);
+$register міняти mstore_switch($$);
+$register менять mstore_switch($$);
+
+$register goto mgoto($$);
+$register перейти mgoto($$);
