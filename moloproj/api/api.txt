@@ -39,9 +39,8 @@ $register switch mstore_switch($$);
 $register міняти mstore_switch($$);
 $register менять mstore_switch($$);
 
-$register goto mgoto($$);
-$register перейти mgoto($$);
-
 $register count mstore_count($$);
 $register рахувати mstore_count($$);
 $register считать mstore_count($$);
+
+$register eval $$

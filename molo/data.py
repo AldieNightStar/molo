@@ -14,14 +14,15 @@ class CommandRegistry:
         self.reg: Dict[str, str] = {
             # Basic functions
             "goto": "mgoto($$);",
-            "перейти": "mgoto($$);"
+            "перейти": "mgoto($$);",
+            "clear": "mclear();",
+            "очистка": "mclear();"
         }
     def renderCommand(self, cmd: Command) -> str:
         val = self.reg.get(cmd.name, None)
         if val == None:
             print(f"WARN: Function '{cmd.name} is not registered.")
             return f"// no such function: {cmd.name}"
-        # TODO: also replace "##" with escaped "args"
         return val.replace("$$", cmd.args)
     def register(self, name: str, val: str):
         self.reg[name] = val
