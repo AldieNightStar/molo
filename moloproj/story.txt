@@ -1,15 +1,14 @@
 $import api/api.txt
 
 :main
+    .продовж "Одного милого дня - тебе викрав злий чарівник"
+    .продовж "І закрив в якомусь старому домі"
+    .продовж "Тепер твоє завдання вибратись"
     .перейти "дім"
 
 :дім
     .image "https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg", 100
     Ти знаходишся в дома
-    .міняти "ключ"
-    .якщо mstore_get("ключ")
-        Ключ є
-    .кінець
     .кнопка "Підійти до вікна", "вікно"
     .buttonjs "Message window", () => window.alert("Hello. Am message window :3")
 

@@ -53,8 +53,11 @@ Hello there!
 
 # JavaScript API
 ```js
-// Print text
+// Print text with nextline
 mprint(text);
+
+// Print without nextline
+mprint(text, false);
 
 // Clear
 mclear();

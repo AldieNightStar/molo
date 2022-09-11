@@ -1,10 +1,20 @@
-function mprint(text) {
+function mprint(text, nextLine=true) {
     let t = document.createElement("span");
-    let br = document.createElement("br");
     t.innerText = text;
     let textEl = document.getElementById("text");
     textEl.appendChild(t);
-    textEl.appendChild(br);
+    if (nextLine) {
+        let br = document.createElement("br");
+        textEl.appendChild(br);
+    }
+}
+
+function printContinue(text) {
+    mprint(text, false);
+    return new Promise(ok => {
+        button(">>", ok);
+        mprint("");
+    });
 }
 function mclear() {
     document.getElementById("text").innerHTML = "";

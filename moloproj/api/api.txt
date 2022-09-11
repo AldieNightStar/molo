@@ -43,4 +43,8 @@ $register count mstore_count($$);
 $register рахувати mstore_count($$);
 $register считать mstore_count($$);
 
+$register continue await printContinue($$);
+$register продовж await printContinue($$);
+$register подолж await printContinue($$);
+
 $register eval $$
