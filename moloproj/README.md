@@ -46,9 +46,14 @@ Hello there!
 
 == Count numeric variables (Each time - 1)
 .count name, -1
-
-== Evaluate JS directly (Not safe)
+```
+* Evaluate `JavaScript` directly
+```
 .eval console.log("Hello!");
+```
+* Prints text that waits for button to be pressed to continue
+```
+.continue "This is awaiten text"
 ```
 
 # JavaScript API
@@ -89,4 +94,7 @@ mstore_switch(name);
 
 // Count (Each time + num)
 mstore_count(name, num=1)
+
+// Print text and wait for button to be pressed to continue
+await printContinue(text)
 ```
