@@ -48,8 +48,8 @@ mclear();
 * Then resulting js file need to be connected to your _browser_ OR _UI app_
 * Then `molostart()` need to be runned
 
-# Basi functions
-* This default functions need to be implemented:
+# Basic functions
+* This functions need to be implemented:
 ```js
 // Print something to the screen
 mprint(text);
@@ -61,8 +61,8 @@ mclear();
 # Custom commands
 * Config commands starts with `$`. At runtime they are not exist
 * To register _custom command_ do: ...
-    * `$$` will be replaced with arguments. Sample: `.log "Hello world", 123, "abc"`
-    * Syntax: `$register (name of the command) (js string up to '\n' symbol)`
+    * `$$` will be replaced with arguments.
+    * Syntax: `$register (name of the command) (js string until nextline)`
 ```
 $register log console.log($$);
 $register лог console.log($$);
