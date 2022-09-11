@@ -1,0 +1,22 @@
+$register button buttonX($$);
+$register кнопка buttonX($$);
+
+$register buttonjs button($$);
+
+$register image addImage($$);
+$register картинка addImage($$);
+
+$register music playMusic($$);
+$register музыка playMusic($$);
+
+$register stopmusic stopMusic();
+$register стоп-музыка stopMusic();
+$register тихо stopMusic();
+
+$register if if ($$) {
+$register якщо if ($$) {
+$register если if ($$) {
+
+$register end }
+$register кінець }
+$register конец }

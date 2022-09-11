@@ -1,45 +1,61 @@
 # Molo - Compiler for visual novels
 
-# Language & Usage
+# Install & Usage
+* Just download this repo/package
+* Use `moloc.py` as compiler: `moloc.py story` or `moloc.py story auto` for auto compilation
+* To run compilation make sure that `moloc.py` in your `PATH` environment variable
+* Use provided template or write yourself
+    * To create new project just copy `moloproj` project to new directory and make changes
+    * Use `build.sh` or `python moloc.py story` instead to compile
+
+# Language
+* Create chapter
 ```
-== Comment
-:chapter
-.command
-Simple text
-.link "Link to next chapter", "chapter2"
+:chapter_name
+This is chapter
+```
+* Put a comment
+```
+== This is a comment
+```
+* Add command
+```
+.command arg1, arg2, "arg3", etc
+```
 
-:chapter2
-Another text
+# JS API
+```js
+// Start compiled story
+molostart();
 
-:chapter3
-Some text etc
+// Change scene to other
+mgoto(name);
+
+// Update current scene
+mgoto();
+
+// Print something to the screen
+mprint(text);
+
+// Clear the screen
+mclear();
+
+// The rest should be provided by a template
 ```
 
 # How to use compiled code
 * Code will be compiled using template-provided api and functions
-* Then resulted js file need to be connected to your _browser_ OR _UI app_
+* Then resulting js file need to be connected to your _browser_ OR _UI app_
 * Then `molostart()` need to be runned
 
-# Basic functions it uses
-* This functions need to be implemented by your template
-* The rest are template/api specific
-   * To add new functions - use `$register func ...` command
+# Basi functions
+* This default functions need to be implemented:
 ```js
-// Clears everything up
-mclear();
-
-// Print function
+// Print something to the screen
 mprint(text);
-```
 
-# JavaScript inline
-* Just add `.js` line and write on next line js code up to `.endjs` line.
-    * Warning: No arguments needed for `.js` or `.endjs`. Otherwise fail
-* Variables created with inline js WILL NOT save, so make sure you have variable storage. For example global `object` with game stuff
-```
-.js
-    console.log("Hello!");
-.endjs
+// Clear the screen
+mclear();
 ```
 
 # Custom commands
@@ -66,6 +82,16 @@ $import en_commands.txt
 $js api.js
 $js test.js
 $js super_commands.js
+```
+
+# JavaScript inline
+* Just add `.js` line and write on the next line js code up to `.endjs` line.
+    * Warning: No arguments needed for `.js` or `.endjs`. Otherwise fail
+* Variables created with inline js _WILL NOT_ be saved, so make sure you have variable storage. For example global `store` with game stuff
+```
+.js
+    console.log("Hello!");
+.endjs
 ```
 
 # Template

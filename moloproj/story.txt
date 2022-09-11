@@ -1,13 +1,15 @@
-$import api.txt
+$import api/api.txt
 
 :main
     .js
-        mgoto("дім")
+        mgoto("дім");
     .endjs
 
 :дім
+    .image "https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg", 320
     Ти знаходишся в дома
     .кнопка "Підійти до вікна", "вікно"
+    .buttonjs "Message window", () => window.alert("Hello. Am message window :3")
 
 :вікно
     У вікні нічого цікавого

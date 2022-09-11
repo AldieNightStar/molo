@@ -1,3 +1,5 @@
+from typing import Dict
+
 class Command:
     def __init__(self, name: str, args: str) -> None:
         self.name = name
@@ -16,7 +18,9 @@ class CommandRegistry:
         }
     def renderCommand(self, cmd: Command) -> str:
         val = self.reg.get(cmd.name, None)
-        if val == None: return f"// no such function: {cmd.name}"
+        if val == None:
+            print(f"WARN: Function '{cmd.name} is not registered.")
+            return f"// no such function: {cmd.name}"
         # TODO: also replace "##" with escaped "args"
         return val.replace("$$", cmd.args)
     def register(self, name: str, val: str):
