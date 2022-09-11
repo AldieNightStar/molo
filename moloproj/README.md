@@ -11,7 +11,7 @@ Hello there!
 ```
 * Button with js callback when click
 ```
-.button "Click me", () => console.log("WOW")
+.buttonjs "Click me", () => console.log("WOW")
 ```
 * Play music (`0.5` means half a volume)
 ```
