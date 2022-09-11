@@ -1,17 +1,24 @@
 $import api/api.txt
 
+== Main chapter
 :main
-    .продовж "Одного милого дня - тебе викрав злий чарівник"
-    .продовж "І закрив в якомусь старому домі"
-    .продовж "Тепер твоє завдання вибратись"
-    .перейти "дім"
+    == This text will wait for continue button
+    .continue "Let's start with a new story"
+    .continue "Write your new world with Molo"
 
-:дім
-    .image "https://foyr.com/learn/wp-content/uploads/2021/08/design-your-dream-home.jpg", 100
-    Ти знаходишся в дома
-    .кнопка "Підійти до вікна", "вікно"
-    .buttonjs "Message window", () => window.alert("Hello. Am message window :3")
+    == This is simple command which allows you to goto by name
+    == Alternatively you could write: * button("Next chapter", () => mgoto("chapter2"))
+    .button "Next chapter", "chapter2"
 
-:вікно
-    У вікні нічого цікавого
-    .кнопка "Відійти назад", "дім"
+    == This is js block code
+    .js
+        window.cnt = 0;
+    .endjs
+
+:chapter2
+    == This is js button
+    * button("JS button", () => window.alert("Hello from JS"));
+
+    == Let's add some interaction
+    == For more javascript api details - refer to README.md
+    * button("Count: " + window.cnt, () => { window.cnt += 1; mgoto(); });
