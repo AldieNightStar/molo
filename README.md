@@ -4,9 +4,7 @@
 * Just download this repo/package
 * Use `moloc.py` as compiler: `moloc.py story` or `moloc.py story auto` for auto compilation
 * To run compilation make sure that `moloc.py` in your `PATH` environment variable
-* Use provided template or write yourself
-    * To create new project just copy `moloproj` project to new directory and make changes
-    * Use `build.sh` or `python moloc.py story` instead to compile
+* `moloc.py new name` - will create new project based on `moloproj` template
 
 # Language
 * Create chapter
@@ -93,6 +91,3 @@ $js super_commands.js
     console.log("Hello!");
 .endjs
 ```
-
-# Template
-* Please, use template `moloproj` for your new projects
