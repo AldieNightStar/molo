@@ -46,6 +46,9 @@ Hello there!
 
 == Count numeric variables (Each time - 1)
 .count name, -1
+
+== Evaluate JS directly (Not safe)
+.eval console.log("Hello!");
 ```
 
 # JavaScript API
