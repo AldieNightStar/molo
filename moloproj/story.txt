@@ -16,6 +16,7 @@ $import api/api.txt
     .js
         @@cnt = 0;
     .endjs
+    * console.log(bgColor())
 
 :chapter2
     == This is js button

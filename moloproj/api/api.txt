@@ -23,3 +23,11 @@ $register стоп-звук stopSound();
 $register continue await printContinue($$);
 $register продовж await printContinue($$);
 $register подолж await printContinue($$);
+
+$register bgcolor bgColor($$);
+$register цвет-фона bgColor($$);
+$register колір-фону bgColor($$);
+
+$register fontcolor fontColor($$);
+$register цвет-текста fontColor($$);
+$register колір-тексту fontColor($$);
