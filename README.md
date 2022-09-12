@@ -39,6 +39,21 @@ This is chapter
 
 # JS API
 ```js
+// Time token
+// Will be replaced to seconds number. In our case: 85
+// Format: Tmm:ss
+let seconds = T1:25
+
+// Set internal variable
+// Syntactic sugar: @@name replaced with window.mvars['name']
+// You can have whatever name for the variable. Ex: @@score
+@@name = 123;
+
+// Get internal variable
+// Syntactic sugar: @@name replaced with window.mvars['name']
+// You can have whatever name for the variable. Ex: @@score
+let name = @@name;
+
 // Variables storage. Could be used to save game state
 // To make it available, make your stories using (syntax): @@variables
 mvars
@@ -111,5 +126,6 @@ $js super_commands.js
 ```
 .js
     console.log("Hello!");
+    @@money = 100;
 .endjs
 ```

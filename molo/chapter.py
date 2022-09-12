@@ -2,7 +2,15 @@ from typing import Dict, List
 from molo.data import CommandRegistry
 
 from molo.processors import detectChapter, detectCommand, detectComment
-from molo.replacer import replaceVars
+from molo.replacer import replaceTime, replaceVars
+
+def processJS(line: str) -> str:
+    "Function which processes js lines and add some abilities to it"
+    # Replace variables: @@a to window.mvars['a']
+    line = replaceVars(line)
+    # Process time lines T1:25 to 85 (Convert time representation string to number)
+    line = replaceTime(line)
+    return line
 
 def parseChapters(lines: List[str]) -> Dict[str, List[str]]:
     chapters: Dict[str, List[str]] = {}
@@ -37,17 +45,17 @@ def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
     for line in chapterLines:
         # Lines starting with "*" is JS code as well
         if line.startswith("*") and not line.startswith("**"):
-            jsline = line[1:].lstrip()
-            # Replace variables: @@a to window.mvars['a']
-            jsline = replaceVars(jsline)
+            # Process js line
+            jsline = processJS(line[1:].lstrip())
             arr.append(jsline)
             continue
         # Js mode allows to add { ... } blocks of js code
         if jsMode:
             # If line is ".endjs" then we ending
-            if line == ".endjs": arr.append("}"); jsMode = False; continue
-            # Replace variables: @@a to window.mvars['a']
-            line = replaceVars(line)
+            if line == ".endjs": arr.append("}"); jsMode = False; continue\
+            # Process js line
+            line = processJS(line)
+            # Add some tabulation
             arr.append("    " + line)
             continue
         # .js command allows to set jsMode
