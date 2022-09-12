@@ -73,3 +73,19 @@ function stopSound() {
     sound.pause();
     sound.currentTime = 0;
 }
+
+window.defaultColor = "rgb(27, 20, 0)";
+
+function bgColor(color) {
+    if (color) {
+        document.body.style.backgroundColor = color;
+    }
+    return document.body.style.backgroundColor ? document.body.style.backgroundColor : defaultColor;
+}
+
+function fontColor(color) {
+    if (color) {
+        document.body.style.color = color;
+    }
+    return document.body.style.color ? document.body.style.color : "white";
+}

@@ -27,6 +27,14 @@ Hello there!
 ```
 .continue "This is awaiten text"
 ```
+* Colors
+```
+== Background color
+.bgcolor "black"
+
+== Font color
+.fontcolor "yellow"
+```
 
 # JavaScript API
 ```js
@@ -59,4 +67,23 @@ playSound(src, vol=.5);
 
 // Stop sound if it too long
 stopSound();
+
+// ================================
+// Colors
+// ================================
+
+// Set Background color
+bgColor(color);
+
+// Set Font color
+fontColor(color);
+
+// Get Background color
+let color = bgColor();
+
+// Get Font color
+let color = fontColor();
+
+// Default background color
+defaultColor
 ```
