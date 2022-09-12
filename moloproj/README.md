@@ -48,10 +48,10 @@ mprint(text, false);
 mclear();
 
 // Add button
-button(caption, onclick);
+let b = button(caption, onclick);
 
 // Add button with only goto operation
-button(caption, sceneName);
+let b = buttonX(caption, sceneName);
 
 // Add image (width in percents)
 addImage(src, width);

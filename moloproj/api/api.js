@@ -15,7 +15,10 @@ function mprint(text, nextLine=true) {
 function printContinue(text) {
     mprint(text, false);
     return new Promise(ok => {
-        button(">>", ok);
+        let b = button(">>", () => {
+            ok();
+            b.parentElement.removeChild(b);
+        });
         mprint("");
     });
 }
@@ -28,10 +31,11 @@ function button(name, onclick) {
     b.innerText = name;
     b.onclick = onclick;
     el.appendChild(b);
+    return b;
 }
 
 function buttonX(name, sceneToGo) {
-    button(name, () => mgoto(sceneToGo));
+    return button(name, () => mgoto(sceneToGo));
 }
 
 function addImage(src, size) {
