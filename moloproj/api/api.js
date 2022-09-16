@@ -34,8 +34,9 @@ function button(name, onclick) {
     return b;
 }
 
-function buttonX(name, sceneToGo) {
-    return button(name, () => mgoto(sceneToGo));
+function buttonX(name, sceneToGo, func = ()=>{}) {
+    if (sceneToGo === "" || sceneToGo === 0 || sceneToGo === null) sceneToGo = mscene_cur
+    return button(name, () => { func(); mgoto(sceneToGo); });
 }
 
 function addImage(src, size) {

@@ -5,9 +5,16 @@
 ```
 Hello there!
 ```
-* Button with `goto` operation when click
+* Button
 ```
-.button "Click me", "scene2"
+== Just add the button with goto operation
+.button "Go to scene2", "scene2"
+
+== Add the button with goto and func
+.button "Go to scene2 and do some stuff", "scene2", () => {$$score += 1}
+
+== Add the button with func and update operation
+.button "Do some stuff and update scene", "", () => {$$score += 1}
 ```
 * Play music/sound (`0.5` means half a volume)
 ```
@@ -52,6 +59,14 @@ let b = button(caption, onclick);
 
 // Add button with only goto operation
 let b = buttonX(caption, sceneName);
+
+// Add button with goto operation AND function before goto
+let b = buttonX(caption, sceneName, () => $$score += 1);
+
+// Add button which just update current scene with function
+// Just instead of name - use one off:
+//   0   null   ""
+let b = buttonX(caption, "", () => $$score += 1);
 
 // Add image (width in percents)
 addImage(src, width);

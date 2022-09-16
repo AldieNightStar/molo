@@ -24,6 +24,9 @@ $import api/api.txt
     == This is js button
     * button("JS button", () => $$$myalert());
 
+    == This is advanced button functionality
+    .button "Advanced button", "", () => window.alert("Hello from advanced buttons")
+
     == Let's add some interaction
     == For more javascript api details - refer to README.md
     * button("Count: " + $$cnt, () => { $$cnt += 1; mgoto(); });
