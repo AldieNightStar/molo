@@ -42,7 +42,7 @@ def parseChapters(lines: List[str]) -> Dict[str, List[str]]:
 
 def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
     "Replaces lines with commands"
-    arr: List[str] = ["mclear();"]
+    arr: List[str] = []
     jsMode = False
     for line in chapterLines:
         # Lines starting with "*" is JS code as well
