@@ -26,6 +26,7 @@ This is chapter
 
 * Add js block
     * `@@variables` are mapped to `window.mvars['variables']` under the hood
+    * `@@@scene_name` are mapped to `window.mscenes['scene_name']` under the hood
 ```
 .js
     console.log(@@count);
