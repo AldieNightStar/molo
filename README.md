@@ -25,17 +25,17 @@ This is chapter
 ```
 
 * Add js block
-    * `@@variables` are mapped to `window.mvars['variables']` under the hood
-    * `@@@scene_name` are mapped to `window.mscenes['scene_name']` under the hood
+    * `$$variables` are mapped to `window.mvars['variables']` under the hood
+    * `$$$scene_name` are mapped to `window.mscenes['scene_name']` under the hood
 ```
 .js
-    console.log(@@count);
+    console.log($$count);
 .endjs
 ```
 
 * Add js inline
 ```
-* console.log(@@count);
+* console.log($$count);
 ```
 
 # JS API
@@ -46,28 +46,28 @@ This is chapter
 let seconds = T1:25
 
 // Set internal variable
-// Syntactic sugar: @@name replaced with window.mvars['name']
-// You can have whatever name for the variable. Ex: @@score
-@@name = 123;
+// Syntactic sugar: $$name replaced with window.mvars['name']
+// You can have whatever name for the variable. Ex: $$score
+$$name = 123;
 
 // Get internal variable
-// Syntactic sugar: @@name replaced with window.mvars['name']
-// You can have whatever name for the variable. Ex: @@score
-let name = @@name;
+// Syntactic sugar: $$name replaced with window.mvars['name']
+// You can have whatever name for the variable. Ex: $$score
+let name = $$name;
 
 // Get scene by name as variable
-// Syntactic sugar: @@@name replaced with window.mscenes['name']
-// You can have whatever name for the scene. Ex: @@@myscene
-let scene = @@@main;
+// Syntactic sugar: $$$name replaced with window.mscenes['name']
+// You can have whatever name for the scene. Ex: $$$myscene
+let scene = $$$main;
 
 // Call scene directly as function
 // Also 'await' could be used here if needed
-// Syntactic sugar: @@@name replaced with window.mscenes['name']
-// You can have whatever name for the scene. Ex: @@@myscene
-@@@main();
+// Syntactic sugar: $$$name replaced with window.mscenes['name']
+// You can have whatever name for the scene. Ex: $$$myscene
+$$$main();
 
 // Variables storage. Could be used to save game state
-// To make it available, make your stories using (syntax): @@variables
+// To make it available, make your stories using (syntax): $$variables
 mvars
 
 // Start compiled story
@@ -113,7 +113,7 @@ $register log console.log($$);
 $register лог console.log($$);
 $register debug console.log("DEBUG", $$);
 ```
-* They could be run like: `log "Hello!", 123, @@variable, etc()`
+* They could be run like: `log "Hello!", 123, $$variable, etc()`
 
 # Include other stories
 ```
@@ -134,10 +134,10 @@ $js super_commands.js
 # JavaScript inline
 * Just add `.js` line and write on the next line js code up to `.endjs` line.
     * Warning: No arguments needed for `.js` or `.endjs`. Otherwise fail
-* Variables created with inline js _WILL NOT_ be saved, so use `@@variables`
+* Variables created with inline js _WILL NOT_ be saved, so use `$$variables`
 ```
 .js
     console.log("Hello!");
-    @@money = 100;
+    $$money = 100;
 .endjs
 ```

@@ -1,7 +1,7 @@
 import re
 
-VAR_WORD = re.compile(r"\@\@[\wа-яієї]+")
-VAR_WORD_SCENE = re.compile(r"\@\@\@[\wа-яієї]+")
+VAR_WORD = re.compile(r"\$\$[\wа-яієї]+")
+VAR_WORD_SCENE = re.compile(r"\$\$\$[\wа-яієї]+")
 TIME_WORD = re.compile(r"T\d+\:\d\d")
 
 def processJS(line: str) -> str:
@@ -15,11 +15,11 @@ def processJS(line: str) -> str:
     return line
 
 def __def_converter_specvar(s: str) -> str:
-    if s.startswith("@@"): s = s[2:]
+    if s.startswith("$$"): s = s[2:]
     return f"window.mvars['{s}']"
 
 def __def_converter_specvar_scene(s: str) -> str:
-    if s.startswith("@@@"): s = s[3:]
+    if s.startswith("$$$"): s = s[3:]
     return f"window.mscenes['{s}']"
 
 def __def_converter_time(s: str) -> str:

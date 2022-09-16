@@ -14,16 +14,16 @@ $import api/api.txt
     .button "Next chapter", "chapter2"
 
     == This is js block code
-    == @@variables are mapped to window.mvars['variables']
+    == $$variables are mapped to window.mvars['variables']
     == Just a small syntactic sugar
     .js
-        @@cnt = 0;
+        $$cnt = 0;
     .endjs
 
 :chapter2
     == This is js button
-    * button("JS button", () => @@@myalert());
+    * button("JS button", () => $$$myalert());
 
     == Let's add some interaction
     == For more javascript api details - refer to README.md
-    * button("Count: " + @@cnt, () => { @@cnt += 1; mgoto(); });
+    * button("Count: " + $$cnt, () => { $$cnt += 1; mgoto(); });
