@@ -3,7 +3,13 @@ from typing import Dict, List, Tuple
 from molo.data import *
 import io
 
+from molo.replacer import processJS
+
 def readJsFromSpecs(specs: List[str]) -> List[str]:
+    """
+    Reads Spec lines and returns js files (src) to concat.
+    Also it processing js-lines. So @@vars and @@@scenes are working as well
+    """
     jsFiles = []
     arr = []
     for spec in specs:
@@ -12,7 +18,8 @@ def readJsFromSpecs(specs: List[str]) -> List[str]:
             continue
     for jsFile in jsFiles:
         with io.open(jsFile, encoding="UTF-8") as f:
-            arr.append(f.read())
+            src = processJS(f.read())
+            arr.append(src)
     return arr
 
 def readSpecs(lines: List[str]) -> Tuple[List[str], List[str]]:
