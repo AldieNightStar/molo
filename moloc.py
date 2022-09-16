@@ -20,9 +20,9 @@ USAGE = """moloc.py [filename] [auto]
 
 def auto(filename):
     while True:
-        sleep(5)
         print("Rebuild...")
         buildFile(filename)
+        sleep(5)
 
 def buildFile(filename):
     chapters, _ = compile(filename)

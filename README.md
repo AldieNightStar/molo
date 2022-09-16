@@ -54,6 +54,17 @@ let seconds = T1:25
 // You can have whatever name for the variable. Ex: @@score
 let name = @@name;
 
+// Get scene by name as variable
+// Syntactic sugar: @@@name replaced with window.mscenes['name']
+// You can have whatever name for the variable. Ex: @@myscene
+let scene = @@@main;
+
+// Call scene directly as function
+// Also 'await' could be used here if needed
+// Syntactic sugar: @@@name replaced with window.mscenes['name']
+// You can have whatever name for the variable. Ex: @@myscene
+@@@main();
+
 // Variables storage. Could be used to save game state
 // To make it available, make your stories using (syntax): @@variables
 mvars

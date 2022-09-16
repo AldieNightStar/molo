@@ -1,11 +1,16 @@
 import re
 
 VAR_WORD = re.compile(r"\@\@[\wа-яієї]+")
+VAR_WORD_SCENE = re.compile(r"\@\@\@[\wа-яієї]+")
 TIME_WORD = re.compile(r"T\d+\:\d\d")
 
 def __def_converter_specvar(s: str) -> str:
     if s.startswith("@@"): s = s[2:]
     return f"window.mvars['{s}']"
+
+def __def_converter_specvar_scene(s: str) -> str:
+    if s.startswith("@@@"): s = s[3:]
+    return f"window.mscenes['{s}']"
 
 def __def_converter_time(s: str) -> str:
     if not ":" in s: return
@@ -21,6 +26,9 @@ def replaceByRe(re: re.Pattern[str], src: str, converterFn) -> str:
         if s == None: continue
         src = src.replace(s, converterFn(s))
     return src
+
+def replaceScenes(src: str, converterFn=__def_converter_specvar_scene):
+    return replaceByRe(VAR_WORD_SCENE, src, converterFn)
 
 def replaceVars(src: str, converterFn=__def_converter_specvar) -> str:
     return replaceByRe(VAR_WORD, src, converterFn)

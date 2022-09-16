@@ -2,10 +2,12 @@ from typing import Dict, List
 from molo.data import CommandRegistry
 
 from molo.processors import detectChapter, detectCommand, detectComment
-from molo.replacer import replaceTime, replaceVars
+from molo.replacer import replaceScenes, replaceTime, replaceVars
 
 def processJS(line: str) -> str:
     "Function which processes js lines and add some abilities to it"
+    # Replace variables: @@@scene_name to window.mscenes['scene_name']
+    line = replaceScenes(line)
     # Replace variables: @@a to window.mvars['a']
     line = replaceVars(line)
     # Process time lines T1:25 to 85 (Convert time representation string to number)
