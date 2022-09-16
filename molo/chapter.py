@@ -2,7 +2,7 @@ from typing import Dict, List
 from molo.data import CommandRegistry
 
 from molo.processors import detectChapter, detectCommand, detectComment
-from molo.replacer import processJS
+from molo.replacer import processVariables
 
 def parseChapters(lines: List[str]) -> Dict[str, List[str]]:
     chapters: Dict[str, List[str]] = {}
@@ -35,18 +35,18 @@ def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
     arr: List[str] = []
     jsMode = False
     for line in chapterLines:
+        # Process $$* variables etc
+        line = processVariables(line)
         # Lines starting with "*" is JS code as well
         if line.startswith("*") and not line.startswith("**"):
-            # Process js line
-            jsline = processJS(line[1:].lstrip())
-            arr.append(jsline)
+            # Add JS line
+            arr.append(line[1:].lstrip())
             continue
         # Js mode allows to add { ... } blocks of js code
         if jsMode:
             # If line is ".endjs" then we ending
             if line == ".endjs": jsMode = False; continue
-            # Process js line
-            line = processJS(line)
+            # Add js line
             arr.append(line)
             continue
         # .js command allows to set jsMode
@@ -57,7 +57,7 @@ def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
         command = detectCommand(line)
         if command: arr.append(creg.renderCommand(command)); continue
         # If no command etc, then add default print command
-        line = line.replace("`", "'")
+        line = line.replace("`", "ʽ") # Replace ` symbol to something else
         arr.append(f"mprint(`{line}`);")
     return arr
 

@@ -3,7 +3,7 @@ from typing import Dict, List, Tuple
 from molo.data import *
 import io
 
-from molo.replacer import processJS
+from molo.replacer import processVariables
 
 def readJsFromSpecs(specs: List[str]) -> List[str]:
     """
@@ -18,7 +18,7 @@ def readJsFromSpecs(specs: List[str]) -> List[str]:
             continue
     for jsFile in jsFiles:
         with io.open(jsFile, encoding="UTF-8") as f:
-            src = processJS(f.read())
+            src = processVariables(f.read())
             arr.append(src)
     return arr
 
