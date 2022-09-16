@@ -44,16 +44,14 @@ def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
         # Js mode allows to add { ... } blocks of js code
         if jsMode:
             # If line is ".endjs" then we ending
-            if line == ".endjs": arr.append("}"); jsMode = False; continue\
+            if line == ".endjs": jsMode = False; continue
             # Process js line
             line = processJS(line)
-            # Add some tabulation
-            arr.append("    " + line)
+            arr.append(line)
             continue
         # .js command allows to set jsMode
         if line == ".js":
             jsMode = True
-            arr.append("{")
             continue
         # Parse command and render by command registry
         command = detectCommand(line)

@@ -134,7 +134,6 @@ $js super_commands.js
 # JavaScript inline
 * Just add `.js` line and write on the next line js code up to `.endjs` line.
     * Warning: No arguments needed for `.js` or `.endjs`. Otherwise fail
-* Variables created with inline js _WILL NOT_ be saved, so use `$$variables`
 ```
 .js
     console.log("Hello!");
