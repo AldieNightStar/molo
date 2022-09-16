@@ -1,5 +1,8 @@
 $import api/api.txt
 
+:myalert
+    * window.alert("Hello from alert scene. I am used as function");
+
 == Main chapter
 :main
     == This text will wait for continue button
@@ -19,7 +22,7 @@ $import api/api.txt
 
 :chapter2
     == This is js button
-    * button("JS button", () => window.alert("Hello from JS"));
+    * button("JS button", () => @@@myalert());
 
     == Let's add some interaction
     == For more javascript api details - refer to README.md
