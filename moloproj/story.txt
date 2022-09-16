@@ -5,6 +5,8 @@ $import api/api.txt
 
 == Main chapter
 :main
+    * if ($$a === undefined) $$a = 1;
+    Счет ${$$a}
     == This text will wait for continue button
     .continue "Let's start with a new story"
     .continue "Write your new world with Molo"

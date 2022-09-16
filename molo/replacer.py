@@ -4,7 +4,7 @@ VAR_WORD = re.compile(r"\$\$[\wа-яієї]+")
 VAR_WORD_SCENE = re.compile(r"\$\$\$[\wа-яієї]+")
 TIME_WORD = re.compile(r"T\d+\:\d\d")
 
-def processJS(line: str) -> str:
+def processVariables(line: str) -> str:
     "Function which processes js lines and add some abilities to it"
     # Replace variables: @@@scene_name to window.mscenes['scene_name']
     line = replaceScenes(line)

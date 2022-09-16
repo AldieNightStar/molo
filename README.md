@@ -38,6 +38,12 @@ This is chapter
 * console.log($$count);
 ```
 
+* String interpolation
+    * just add `${ }` and contents inside. For example `$$name`
+```
+Hello ${ $$name }
+```
+
 # JS API
 ```js
 // Time token
