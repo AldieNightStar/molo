@@ -48,8 +48,8 @@ Hello ${ $$name }
 ```js
 // Time token
 // Will be replaced to seconds number. In our case: 85
-// Format: Tmm:ss
-let seconds = T1:25
+// Format: Tmm.ss
+let seconds = T1.25
 
 // Set internal variable
 // Syntactic sugar: $$name replaced with window.mvars['name']
