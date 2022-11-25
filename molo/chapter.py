@@ -58,7 +58,7 @@ def processChapter(creg: CommandRegistry, chapterLines: List[str]) -> List[str]:
         if command: arr.append(creg.renderCommand(command)); continue
         # If no command etc, then add default print command
         line = line.replace("`", "ʽ") # Replace ` symbol to something else
-        arr.append(f"mprint(`{line}`);")
+        arr.append(f"await mprint(`{line}`);")
     return arr
 
 def processAllChapters(creg: CommandRegistry, chapters: Dict[str, List[str]]) -> Dict[str, str]:

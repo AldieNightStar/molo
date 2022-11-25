@@ -86,7 +86,7 @@ mgoto(name);
 mgoto();
 
 // Print something to the screen
-mprint(text);
+await mprint(text);
 
 // Clear the screen
 mclear();
@@ -103,7 +103,7 @@ mclear();
 * This functions need to be implemented:
 ```js
 // Print something to the screen
-mprint(text);
+await mprint(text);
 
 // Clear the screen
 mclear();

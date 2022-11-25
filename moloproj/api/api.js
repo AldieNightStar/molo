@@ -1,15 +1,43 @@
 window.music = new Audio();
 window.sound = new Audio();
 
-function mprint(text, nextLine=true) {
+window._timers = [];
+
+function _setTimeout(cb, time) {
+    window._timers.push(setTimeout(cb, time));
+}
+
+function _setInterval(cb, time) {
+    window._timers.push(setInterval(cb, time));
+}
+
+function _clearTimers() {
+    window._timers.forEach(t => clearInterval(t));
+    window._timers = [];
+}
+
+function _fadeAdd(source, elem, transitionMS) {
+    elem.style.transition = transitionMS+"ms";
+    elem.style.opacity = "0%";
+    source.appendChild(elem)
+    return new Promise(ok => {
+        _setTimeout(() => {
+            elem.style.opacity = "100%";
+            _setTimeout(ok, transitionMS);
+        })
+    })
+}
+
+function mprint(text, nextLine=true, transition=1000) {
     let t = document.createElement("span");
     t.innerText = text;
     let textEl = document.getElementById("text");
-    textEl.appendChild(t);
+    let promise = _fadeAdd(textEl, t, transition);
     if (nextLine) {
         let br = document.createElement("br");
         textEl.appendChild(br);
     }
+    return promise;
 }
 
 function printContinue(text) {
@@ -23,6 +51,7 @@ function printContinue(text) {
     });
 }
 function mclear() {
+    _clearTimers();
     document.getElementById("text").innerHTML = "";
 }
 function button(name, onclick) {
