@@ -2,13 +2,18 @@ window.music = new Audio();
 window.sound = new Audio();
 
 window._timers = [];
+window.textTransition = 1000;
 
 function _setTimeout(cb, time) {
-    window._timers.push(setTimeout(cb, time));
+    let t = setTimeout(cb, time);
+    window._timers.push(t);
+    return t;
 }
 
 function _setInterval(cb, time) {
-    window._timers.push(setInterval(cb, time));
+    let it = setInterval(cb, time);
+    window._timers.push(it);
+    return it;
 }
 
 function _clearTimers() {
@@ -19,7 +24,7 @@ function _clearTimers() {
 function _fadeAdd(source, elem, transitionMS) {
     elem.style.transition = transitionMS+"ms";
     elem.style.opacity = "0%";
-    source.appendChild(elem)
+    source.appendChild(elem);
     return new Promise(ok => {
         _setTimeout(() => {
             elem.style.opacity = "100%";
@@ -28,7 +33,7 @@ function _fadeAdd(source, elem, transitionMS) {
     })
 }
 
-function mprint(text, nextLine=true, transition=1000) {
+function mprint(text, nextLine=true, transition=window.textTransition) {
     let t = document.createElement("span");
     t.innerText = text;
     let textEl = document.getElementById("text");
@@ -40,32 +45,55 @@ function mprint(text, nextLine=true, transition=1000) {
     return promise;
 }
 
-function printContinue(text) {
+async function printContinue(text) {
     mprint(text, false);
-    return new Promise(ok => {
-        let b = button(">>", () => {
+    return new Promise(async ok => {
+        let b = await button(">>", () => {
             ok();
             b.parentElement.removeChild(b);
         });
-        mprint("");
+        await mprint("");
     });
 }
+
+async function printLetter(text, time=1000, nextLine=true) {
+    let p = document.createElement("span");
+    let timePerLetter = time / text.length;
+    let ptr = 0;
+    let textEl = document.getElementById("text");
+    return new Promise(async ok => {
+        let interval = 0;
+        interval = _setInterval(async () => {
+            if (ptr < text.length) {
+                p.innerHTML += text[ptr++];
+            } else {
+                clearInterval(interval);
+                if (nextLine) textEl.appendChild(document.createElement("br"))
+                _setTimeout(ok, timePerLetter);
+            }
+        }, timePerLetter)
+        await _fadeAdd(textEl, p, 100);
+    })
+}
+
+
 function mclear() {
     _clearTimers();
     document.getElementById("text").innerHTML = "";
 }
-function button(name, onclick) {
+
+async function button(name, onclick) {
     let el = document.getElementById("text");
     let b = document.createElement("button");
     b.innerText = name;
     b.onclick = onclick;
-    el.appendChild(b);
+    await _fadeAdd(el, b, 300);
     return b;
 }
 
-function buttonX(name, sceneToGo, func = ()=>{}) {
+async function buttonX(name, sceneToGo, func = ()=>{}) {
     if (sceneToGo === "" || sceneToGo === 0 || sceneToGo === null) sceneToGo = mscene_cur
-    return button(name, () => { func(); mgoto(sceneToGo); });
+    return await button(name, () => { func(); mgoto(sceneToGo); });
 }
 
 function addImage(src, size) {

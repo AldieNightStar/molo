@@ -6,8 +6,11 @@ $import api/api.txt
 == Main chapter
 :main
     == This text will wait for continue button
+    .print-letter "Hi all and everything which am added to be it here", 3000
     .continue "Let's start with a new story"
     .continue "Write your new world with Molo"
+    .clear
+    .continue "Cleared screen, is better than polished"
 
     == This is simple command which allows you to goto by name
     == Alternatively you could write: * button("Next chapter", () => mgoto("chapter2"))
@@ -29,4 +32,10 @@ $import api/api.txt
 
     == Let's add some interaction
     == For more javascript api details - refer to README.md
-    * button("Count: " + $$cnt, () => { $$cnt += 1; mgoto(); });
+    * await button("Count: " + $$cnt, () => { $$cnt += 1; mgoto(); });
+    == Example for using button. Do not forget to use 'await'
+    .js
+        for (let i = 0; i < 10; i++) {
+            await button(`B${i}`, () => window.alert(`Count is: ${i}`));
+        }
+    .endjs

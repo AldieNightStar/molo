@@ -42,31 +42,45 @@ Hello there!
 == Font color
 .fontcolor "yellow"
 ```
+* Print by letters (1000 is milliseconds)
+```
+.print-letter "Hello there", 1000
+```
+* Clear everything on the screen
+```
+.clear
+```
 
 # JavaScript API
 ```js
 // Print text with nextline
-mprint(text);
+await mprint(text);
 
 // Print without nextline
-mprint(text, false);
+await mprint(text, false);
 
-// Clear
+// Print text with nextline and with 1000 ms transition
+await mprint(text, true, 1000);
+
+// Print text with letter by letter for ms time
+await printLetter(text, ms, nextLine=true)
+
+// Clear the scene and timers
 mclear();
 
-// Add button
-let b = button(caption, onclick);
+// Add simple button (No scene changing or refreshing)
+let b = await button(caption, onclick);
 
 // Add button with only goto operation
-let b = buttonX(caption, sceneName);
+let b = await buttonX(caption, sceneName);
 
 // Add button with goto operation AND function before goto
-let b = buttonX(caption, sceneName, () => $$score += 1);
+let b = await buttonX(caption, sceneName, () => $$score += 1);
 
 // Add button which just update current scene with function
 // Just instead of name - use one off:
 //   0   null   ""
-let b = buttonX(caption, "", () => $$score += 1);
+let b = await buttonX(caption, "", () => $$score += 1);
 
 // Add image (width in percents)
 addImage(src, width);

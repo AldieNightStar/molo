@@ -1,7 +1,10 @@
 $js api/api.js
 
-$register button buttonX($$);
-$register кнопка buttonX($$);
+$register clear mclear($$);
+$register чисто mclear($$);
+
+$register button await buttonX($$);
+$register кнопка await buttonX($$);
 
 $register image addImage($$);
 $register картинка addImage($$);
@@ -23,6 +26,10 @@ $register стоп-звук stopSound();
 $register continue await printContinue($$);
 $register продовж await printContinue($$);
 $register продолж await printContinue($$);
+
+$register print-letter await printLetter($$);
+$register друк-букви await printLetter($$);
+$register друк-буквы await printLetter($$);
 
 $register bgcolor bgColor($$);
 $register цвет-фона bgColor($$);
