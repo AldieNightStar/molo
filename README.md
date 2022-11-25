@@ -1,10 +1,25 @@
 # Molo - Compiler for visual novels
 
 # Install & Usage
-* Just download this repo/package
-* Use `moloc.py` as compiler: `moloc.py story` or `moloc.py story auto` for auto compilation
-* To run compilation make sure that `moloc.py` in your `PATH` environment variable
-* `moloc.py new name` - will create new project based on `moloproj` template
+* Install
+    * Download this repo/package
+    * Make sure `moloc.py` in your `PATH` environment variable
+    * On Windows use git-bash or something like that
+    * Use `moloc.py` as compiler
+        * `moloc.py story.txt`
+        * `moloc.py story.txt auto`
+    * `moloc.py new name` - Create new project (Copy from `moloproj` template)
+* Usage
+    * Run `build.sh` and begin to edit your `story.txt` file.
+    * To test run `index.html` for your story
+
+# Release your novel
+* Delete files:
+    * `build.sh` file
+    * `README.md` file
+    * `story.txt` file
+    * `api` folder
+* Publish to a web server
 
 # Language
 
