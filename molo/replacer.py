@@ -2,7 +2,7 @@ import re
 
 VAR_WORD = re.compile(r"\$\$[\wа-яієї]+")
 VAR_WORD_SCENE = re.compile(r"\$\$\$[\wа-яієї]+")
-TIME_WORD = re.compile(r"T\d+\:\d\d")
+TIME_WORD = re.compile(r"T\d+\_\d\d")
 
 def processVariables(line: str) -> str:
     "Function which processes js lines and add some abilities to it"
@@ -23,9 +23,9 @@ def __def_converter_specvar_scene(s: str) -> str:
     return f"window.mscenes['{s}']"
 
 def __def_converter_time(s: str) -> str:
-    if not ":" in s: return
+    if not "_" in s: return
     if s.startswith("T"): s = s[1:]
-    arr = s.split(".", 1)
+    arr = s.split("_", 1)
     if len(arr) != 2: raise RuntimeError("Time string is not m:ss format")
     min, sec = int(arr[0]), int(arr[1])
     return f"{(min*60)+sec}"

@@ -34,7 +34,7 @@ This is chapter
 == This is a comment
 ```
 
-* Add command
+* Command call
 ```
 .command arg1, arg2, "arg3", etc
 ```
@@ -63,8 +63,8 @@ Hello ${ $$name }
 ```js
 // Time token
 // Will be replaced to seconds number. In our case: 85
-// Format: Tmm.ss
-let seconds = T1.25
+// Format: Tmm_ss
+let seconds = T1_25
 
 // Set internal variable
 // Syntactic sugar: $$name replaced with window.mvars['name']
