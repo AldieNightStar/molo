@@ -42,6 +42,9 @@ Hello there!
 == Background color
 .bgcolor "black"
 
+== Default background color
+.bgcolor defaultColor
+
 == Font color
 .fontcolor "yellow"
 ```
@@ -170,6 +173,7 @@ stopSound();
 
 // Set Background color
 bgColor(color);
+bgColor(defaultColor);
 
 // Set Font color
 fontColor(color);
