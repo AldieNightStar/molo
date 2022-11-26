@@ -2,7 +2,7 @@
 
 # Install & Usage
 * Install
-    * Download this repo/package
+    * Download this repo
     * Make sure `moloc.py` in your `PATH` environment variable
     * On Windows use git-bash or something like that
     * Use `moloc.py` as compiler
