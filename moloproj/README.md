@@ -90,7 +90,7 @@ let b = await buttonX(caption, sceneName, () => $$score += 1);
 let b = await buttonX(caption, "", () => $$score += 1);
 
 // Add image (width/height in percents)
-addImage(src, width, height=width);
+await addImage(src, width, height=width);
 
 // Play music
 playMusic(src, volume=0.5);
@@ -98,10 +98,10 @@ playMusic(src, volume=0.5);
 // Stop the music
 stopMusic();
 
-// Play sound
+// Play the sound
 playSound(src, vol=.5);
 
-// Stop sound if it too long
+// Stop the sound
 stopSound();
 
 // ================================

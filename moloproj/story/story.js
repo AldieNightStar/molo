@@ -104,7 +104,7 @@ async function button(name, onclick) {
     let b = document.createElement("button");
     b.innerText = name;
     b.onclick = onclick;
-    await _fadeAdd(el, b, 300);
+    await _fadeAdd(el, b, 100);
     return b;
 }
 
@@ -123,8 +123,9 @@ function addImage(src, sizew=100, sizeh=sizew) {
     img.style.height = "" + percentOf(window.innerHeight, sizeh) + "px";
 
     let text = document.getElementById("text");
-    text.appendChild(img);
+    let promise = _fadeAdd(text, img, window.textTransition);
     text.appendChild(br);
+    return promise;
 }
 
 function playMusic(src, vol=.5) {
@@ -175,7 +176,7 @@ mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
-    addImage("logo.png", 100, 20);
+    await addImage("logo.png", 100, 20);
     await printLetter("This is your story");
     await printContinue("Let's start");
     await printLetter("Hi all and everything which am added to be it here", 3000);

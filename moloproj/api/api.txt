@@ -6,8 +6,8 @@ $register чисто mclear($$);
 $register button await buttonX($$);
 $register кнопка await buttonX($$);
 
-$register image addImage($$);
-$register картинка addImage($$);
+$register image await addImage($$);
+$register картинка await addImage($$);
 
 $register music playMusic($$);
 $register музика playMusic($$);
