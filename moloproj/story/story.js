@@ -9,6 +9,7 @@ function mgoto(name=mscene_cur) {
 }
 
 function molostart() {
+    mclear();
     window.mscenes[window.mscene_cur]();
 }
 window.music = new Audio();
@@ -97,7 +98,11 @@ async function printLetter(text, time=1000, nextLine=true) {
 
 function mclear() {
     _clearTimers();
+    document.body.style['scale'] = 0.75;
     document.getElementById("text").innerHTML = "";
+    setTimeout(() => {
+        document.body.style['scale'] = 1;
+    }, 100);
 }
 
 async function button(name, onclick) {
@@ -266,54 +271,8 @@ mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
-    await title("Small story");
-    addImageCenter("res/divider.png");
     bgImage("res/bg.jpg");
-    await bgZoom(2, 1, 1000);
-    await mprint(`As you can see bg image changed. '.bg' command doing that`);
-    await printLetter("Look closer");
-    bgScale(2, 2);
-    bgTransition(1000);
-    bgPosisition("left");
-    await printLetter("Left side", 1000);
-    bgPosisition("right");
-    await printLetter("Right side", 1000);
-    await wait(1000);
-    bgPosisition("center");
-    bgScale(1, 1);
-    await printLetter("We done with background!");
-    mclear();
-    await printLetter("Now let's try background swiping");
-    bgSwipe("left", "right", 1000);
-    await printLetter("Left to Right");
-    await wait(1000);
-    bgSwipe("top", "bottom", 1000);
-    await printLetter("Top to Bottom");
-    await wait(1000);
-    await printContinue("Let's go next!");
-    await mprint(`Let's play some music`);
-    playMusic("res/music.ogg", 0.2);
-    await printLetter("We will wait to 5th second of that beautiful music", 500);
-    await waitToMusicTime(5);
-    await printLetter("Good. We have done now");
-    await wait(3000);
-    await printContinue("Let's go next!");
-    stopMusic();
-    mclear();
-    await printLetter("Hi all and everything which am added to be it here", 3000);
-    await printContinue("Let's start with a new story");
-    await printContinue("Write your new world with Molo");
-    mclear();
-    await printContinue("Cleared screen, is better than polished");
-    await buttonX("Next chapter", "chapter2");
-    window.mvars['cnt'] = 0;
-};
-mscenes[`chapter2`] = async function() {
-    await button("JS button", () => window.mscenes['myalert']());
-    await buttonX("Advanced button", "", () => window.alert("Hello from advanced buttons"));
-    await buttonX("Advanced JS button", "", () => window.alert("Hello from JS advanced buttons"))
-    await button("Count: " + window.mvars['cnt'], () => { window.mvars['cnt'] += 1; mgoto(); });
-    for (let i = 0; i < 10; i++) {
-    await button(`B${i}`, () => window.alert(`Count is: ${i}`));
-    }
+    await title("Some title");
+    addImageCenter("res/divider.png");
+    await mprint(`Some text`);
 };

@@ -84,7 +84,11 @@ async function printLetter(text, time=1000, nextLine=true) {
 
 function mclear() {
     _clearTimers();
+    document.body.style['scale'] = 0.75;
     document.getElementById("text").innerHTML = "";
+    setTimeout(() => {
+        document.body.style['scale'] = 1;
+    }, 100);
 }
 
 async function button(name, onclick) {

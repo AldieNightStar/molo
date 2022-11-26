@@ -9,5 +9,6 @@ function mgoto(name=mscene_cur) {
 }
 
 function molostart() {
+    mclear();
     window.mscenes[window.mscene_cur]();
 }
