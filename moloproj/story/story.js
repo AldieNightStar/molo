@@ -267,9 +267,6 @@ function title(text) {
     t.innerHTML = text;
     return _fadeAdd(document.getElementById('text'), t, textTransition);
 }
-mscenes[`myalert`] = async function() {
-    window.alert("Hello from alert scene. I am used as function");
-};
 mscenes[`main`] = async function() {
     bgImage("res/bg.jpg");
     await title("Some title");

@@ -1,8 +1,5 @@
 $import api/api.txt
 
-:myalert
-    * window.alert("Hello from alert scene. I am used as function");
-
 == Main chapter
 :main
     .bg "res/bg.jpg"
