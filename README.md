@@ -106,9 +106,17 @@ mclear();
 ```
 
 # How to use compiled code
-* Code will be compiled using template-provided api and functions
-* Then resulting js file need to be connected to your _browser_ OR _UI app_
-* Then `molostart()` need to be runned
+* From scratch
+    * Write your `story.txt` file
+    * Compile it with `moloc.py story.txt story.js` into `story.js` file
+    * Write `html` template for it with provided functions (There already template for it)
+    * Inside of `html` add `molostart()` on page full load
+    * Release it and share with your friends
+* Using provided template
+    * Create project with `moloc.py new projectname`
+    * Edit `story.txt` file
+    * Run `build.sh` to build story
+    * Release `story` folder
 
 # Basic functions
 * This functions need to be implemented:
