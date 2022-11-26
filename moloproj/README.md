@@ -66,8 +66,11 @@ Hello there!
 ```
 * Background Operations
 ```
-== Set background picture
+== Set the background picture
 .bg "res/back"
+
+== Clear the background picture
+.bg ""
 
 == Set background scale (Default: 1, 1)
 == Works with ".bgpos" command
@@ -206,8 +209,11 @@ defaultColor
 // BACKGROUND
 // ============================================
 
-// Set background image
-bgImage("res/background.jpg")
+// Set the background image
+bgImage("res/background.jpg");
+
+// Clear the background image
+bgImage("");
 
 // Set background scale (default: 1, 1)
 bgScale(scaleX, scaleY)
