@@ -68,10 +68,6 @@
 == Print letter by letter (1000 is time in milliseconds)
 .print-letter "Hello there", 1000
 
-== Print text with button
-== To continue need to press that button
-.continue "This is awaiten text"
-
 == Clear everything
 .clear
 
