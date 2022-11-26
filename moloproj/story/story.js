@@ -266,11 +266,6 @@ mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
-    await mprint(`daslhdaskjhdsakjdhhkd`);
-    await mprint(`daslhdaskjhdsakjdhhkd`);
-    await mprint(`daslhdaskjhdsakjdhhkd`);
-    await mprint(`daslhdaskjhdsakjdhhkd`);
-    await mprint(`daslhdaskjhdsakjdhhkd`);
     await title("Small story");
     addImageCenter("res/divider.png");
     bgImage("res/bg.jpg");

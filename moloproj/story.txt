@@ -5,11 +5,6 @@ $import api/api.txt
 
 == Main chapter
 :main
-    daslhdaskjhdsakjdhhkd
-    daslhdaskjhdsakjdhhkd
-    daslhdaskjhdsakjdhhkd
-    daslhdaskjhdsakjdhhkd
-    daslhdaskjhdsakjdhhkd
     .title "Small story"
     .image-center "res/divider.png"
     == Now i am changing bg image
