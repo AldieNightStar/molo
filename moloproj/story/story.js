@@ -173,8 +173,31 @@ function fontColor(color) {
 }
 
 function bgImage(src) {
-    document.body.style['background-image'] = 'linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("' + src + '")';
     document.body.style['background-size'] = "100% " + window.innerHeight + "px";
+    document.body.style['background-image'] = 'linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("' + src + '")';
+    document.body.style['background-repeat'] = "no-repeat";
+    document.body.style['background-attachment'] = "fixed";
+    document.body.style['transition'] = "200ms";
+    bgPosisition("center"); // Change position back to normal
+    bgScale(1, 1); // Change scale back to normal
+}
+
+function bgPosisition(posString) {
+    document.body.style['background-position'] = posString;
+}
+
+function bgTransition(n) {
+    document.body.style.transition = n + "ms";
+}
+
+function bgScale(scaleX, scaleY) {
+    document.body.style['background-size'] = (window.innerWidth * scaleX) + "px " + (window.innerHeight * scaleY) + "px";
+}
+
+function wait(n) {
+    return new Promise(ok => {
+        _setTimeout(ok, n);
+    })
 }
 mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
@@ -186,6 +209,16 @@ mscenes[`main`] = async function() {
     mclear();
     bgImage("res/bg.jpg");
     await printLetter("As you can see bg image changed. '.bg' command doing that");
+    await printLetter("Look closer");
+    bgScale(2, 2);
+    await printLetter("Left side", 1000);
+    bgPosisition("left");
+    await printLetter("Or right side", 1000);
+    bgPosisition("right");
+    await wait(1000);
+    bgPosisition("center");
+    bgScale(1, 1);
+    await printLetter("We done with background!");
     await printContinue("Let's go next");
     await printLetter("Hi all and everything which am added to be it here", 3000);
     await printContinue("Let's start with a new story");
@@ -196,8 +229,9 @@ mscenes[`main`] = async function() {
     window.mvars['cnt'] = 0;
 };
 mscenes[`chapter2`] = async function() {
-    button("JS button", () => window.mscenes['myalert']());
+    await button("JS button", () => window.mscenes['myalert']());
     await buttonX("Advanced button", "", () => window.alert("Hello from advanced buttons"));
+    await buttonX("Advanced JS button", "", () => window.alert("Hello from JS advanced buttons"))
     await button("Count: " + window.mvars['cnt'], () => { window.mvars['cnt'] += 1; mgoto(); });
     for (let i = 0; i < 10; i++) {
     await button(`B${i}`, () => window.alert(`Count is: ${i}`));

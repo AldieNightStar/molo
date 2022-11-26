@@ -14,6 +14,21 @@ $import api/api.txt
     .clear
     .bg "res/bg.jpg"
     .print-letter "As you can see bg image changed. '.bg' command doing that"
+    .print-letter "Look closer"
+    .bgscale 2, 2
+    
+    == Let's change positions of the background
+    == To do so we use '.bgpos' and '.bgscale'
+    == To change the speed we use '.bgtransition'
+    .print-letter "Left side", 1000
+    .bgpos "left"
+    .print-letter "Or right side", 1000
+    .bgpos "right"
+    .wait 1000
+    .bgpos "center"
+    .bgscale 1, 1
+    .print-letter "We done with background!"
+    
     .continue "Let's go next"
 
     == This text will wait for continue button
@@ -24,26 +39,31 @@ $import api/api.txt
     .continue "Cleared screen, is better than polished"
 
     == This is simple command which allows you to goto by name
-    == Alternatively you could write: * button("Next chapter", () => mgoto("chapter2"))
+    == Alternatively you could write: * buttonX("Next chapter", "chapter2")
     .button "Next chapter", "chapter2"
 
     == This is js block code
     == $$variables are mapped to window.mvars['variables']
+    == $$$scenes are mapped to window.mscenes['scenes']
     == Just a small syntactic sugar
     .js
         $$cnt = 0;
     .endjs
 
 :chapter2
-    == This is js button
-    * button("JS button", () => $$$myalert());
+    == This is simple js button
+    * await button("JS button", () => $$$myalert());
 
     == This is advanced button functionality
     .button "Advanced button", "", () => window.alert("Hello from advanced buttons")
 
+    == This is advanced button but in JS
+    * await buttonX("Advanced JS button", "", () => window.alert("Hello from JS advanced buttons"))
+
     == Let's add some interaction
     == For more javascript api details - refer to README.md
     * await button("Count: " + $$cnt, () => { $$cnt += 1; mgoto(); });
+
     == Example for using button. Do not forget to use 'await'
     .js
         for (let i = 0; i < 10; i++) {

@@ -160,6 +160,29 @@ function fontColor(color) {
 }
 
 function bgImage(src) {
-    document.body.style['background-image'] = 'linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("' + src + '")';
     document.body.style['background-size'] = "100% " + window.innerHeight + "px";
+    document.body.style['background-image'] = 'linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("' + src + '")';
+    document.body.style['background-repeat'] = "no-repeat";
+    document.body.style['background-attachment'] = "fixed";
+    document.body.style['transition'] = "200ms";
+    bgPosisition("center"); // Change position back to normal
+    bgScale(1, 1); // Change scale back to normal
+}
+
+function bgPosisition(posString) {
+    document.body.style['background-position'] = posString;
+}
+
+function bgTransition(n) {
+    document.body.style.transition = n + "ms";
+}
+
+function bgScale(scaleX, scaleY) {
+    document.body.style['background-size'] = (window.innerWidth * scaleX) + "px " + (window.innerHeight * scaleY) + "px";
+}
+
+function wait(n) {
+    return new Promise(ok => {
+        _setTimeout(ok, n);
+    })
 }

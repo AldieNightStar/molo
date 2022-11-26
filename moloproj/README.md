@@ -16,13 +16,13 @@ Hello there!
 == Add the button with func and update operation
 .button "Do some stuff and update scene", "", () => {$$score += 1}
 ```
-* Play music/sound (`0.5` means half a volume)
+* Music/Sound operations
 ```
+== Play
 .music "res/audio.mp3", 0.5
 .sound "res/effect1.wav", 0.5
-```
-* Stop music/sound
-```
+
+== Stop
 .stopmusic
 .stopsound
 ```
@@ -36,10 +36,6 @@ Hello there!
 
 == Add image with 20% size (width and height)
 .image "res/image.png", 20
-```
-* Prints text that waits for the button to be pressed
-```
-.continue "This is awaiten text"
 ```
 * Colors
 ```
@@ -56,14 +52,55 @@ Hello there!
 
 == Print letter by letter (1000 is time in milliseconds)
 .print-letter "Hello there", 1000
+
+== Print text with button
+== To continue need to press that button
+.continue "This is awaiten text"
 ```
 * Clear everything on the screen
 ```
 .clear
 ```
+* Background Operations
+```
+== Set background picture
+.bg "res/back"
+
+== Set background scale (Default: 1, 1)
+== Works with ".bgpos" command
+.bgscale 1, 1
+.bgscale 2, 2
+
+== Set background position (Default: center)
+== Better with: .bgscale: 2, 2
+.bgpos "left top"
+.bgpos "right top"
+.bgpos "left bottom"
+.bgpos "right bottom"
+.bgpos "top"
+.bgpos "bottom"
+.bgpos "left"
+.bgpos "right"
+.bgpos "center"
+
+== Set background transition speed in ms
+.bgtransition 1000
+```
+* Timing
+```
+== Wait for 1000 milliseconds
+.wait 1000
+```
 
 # JavaScript API
 ```js
+// ============================================
+// TIMING
+// ============================================
+
+// Wait 1000 milliseconds
+await wait(1000);
+
 // ============================================
 // PRINT
 // ============================================
@@ -152,4 +189,21 @@ defaultColor
 
 // Set background image
 bgImage("res/background.jpg")
+
+// Set background scale (default: 1, 1)
+bgScale(scaleX, scaleY)
+
+// Set background transition speed in ms
+bgTransition(1000)
+
+// Background position (Better with scale: 2, 2)
+bgPosition("left top")
+bgPosition("right top")
+bgPosition("left bottom")
+bgPosition("right bottom")
+bgPosition("top")
+bgPosition("bottom")
+bgPosition("left")
+bgPosition("right")
+bgPosition("center")
 ```

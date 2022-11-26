@@ -41,3 +41,19 @@ $register колір-тексту fontColor($$);
 
 $register bg bgImage($$);
 $register фон bgImage($$);
+
+$register bgpos bgPosisition($$);
+$register фон-позиция bgPosisition($$);
+$register фон-позиція bgPosisition($$);
+
+$register bgtransition bgTransition($$);
+$register фон-скорость bgTransition($$);
+$register фон-швидкість bgTransition($$);
+
+$register bgscale bgScale($$);
+$register фон-размер bgScale($$);
+$register фон-розмір bgScale($$);
+
+$register wait await wait($$);
+$register ждать await wait($$);
+$register чекати await wait($$);
