@@ -2,7 +2,7 @@ window.music = new Audio();
 window.sound = new Audio();
 
 window._timers = [];
-window.textTransition = 1000;
+window.textTransition = 500;
 
 function percentOf(num, percent) {
     return (num / 100) * percent
@@ -26,14 +26,15 @@ function _clearTimers() {
 }
 
 function _fadeAdd(source, elem, transitionMS) {
+    if (transitionMS < 100) transitionMS = 100;
     elem.style.transition = transitionMS+"ms";
     elem.style.opacity = "0%";
     source.appendChild(elem);
     return new Promise(ok => {
         _setTimeout(() => {
             elem.style.opacity = "100%";
-            _setTimeout(ok, transitionMS);
-        }, 1)
+            _setTimeout(ok, transitionMS-50);
+        }, 50)
     })
 }
 

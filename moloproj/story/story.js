@@ -15,7 +15,7 @@ window.music = new Audio();
 window.sound = new Audio();
 
 window._timers = [];
-window.textTransition = 1000;
+window.textTransition = 500;
 
 function percentOf(num, percent) {
     return (num / 100) * percent
@@ -39,14 +39,15 @@ function _clearTimers() {
 }
 
 function _fadeAdd(source, elem, transitionMS) {
+    if (transitionMS < 100) transitionMS = 100;
     elem.style.transition = transitionMS+"ms";
     elem.style.opacity = "0%";
     source.appendChild(elem);
     return new Promise(ok => {
         _setTimeout(() => {
             elem.style.opacity = "100%";
-            _setTimeout(ok, transitionMS);
-        }, 1)
+            _setTimeout(ok, transitionMS-50);
+        }, 50)
     })
 }
 
@@ -265,6 +266,11 @@ mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
+    await mprint(`daslhdaskjhdsakjdhhkd`);
+    await mprint(`daslhdaskjhdsakjdhhkd`);
+    await mprint(`daslhdaskjhdsakjdhhkd`);
+    await mprint(`daslhdaskjhdsakjdhhkd`);
+    await mprint(`daslhdaskjhdsakjdhhkd`);
     await title("Small story");
     addImageCenter("res/divider.png");
     bgImage("res/bg.jpg");
@@ -272,6 +278,7 @@ mscenes[`main`] = async function() {
     await mprint(`As you can see bg image changed. '.bg' command doing that`);
     await printLetter("Look closer");
     bgScale(2, 2);
+    bgTransition(1000);
     bgPosisition("left");
     await printLetter("Left side", 1000);
     bgPosisition("right");
@@ -282,10 +289,10 @@ mscenes[`main`] = async function() {
     await printLetter("We done with background!");
     mclear();
     await printLetter("Now let's try background swiping");
-    await bgSwipe("left", "right", 1000);
+    bgSwipe("left", "right", 1000);
     await printLetter("Left to Right");
     await wait(1000);
-    await bgSwipe("top", "bottom", 1000);
+    bgSwipe("top", "bottom", 1000);
     await printLetter("Top to Bottom");
     await wait(1000);
     await printContinue("Let's go next!");

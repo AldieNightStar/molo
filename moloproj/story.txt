@@ -5,6 +5,11 @@ $import api/api.txt
 
 == Main chapter
 :main
+    daslhdaskjhdsakjdhhkd
+    daslhdaskjhdsakjdhhkd
+    daslhdaskjhdsakjdhhkd
+    daslhdaskjhdsakjdhhkd
+    daslhdaskjhdsakjdhhkd
     .title "Small story"
     .image-center "res/divider.png"
     == Now i am changing bg image
@@ -13,6 +18,7 @@ $import api/api.txt
     As you can see bg image changed. '.bg' command doing that
     .print-letter "Look closer"
     .bgscale 2, 2
+    .bgtransition 1000
     
     == Let's change positions of the background
     == To do so we use '.bgpos' and '.bgscale'
@@ -30,11 +36,11 @@ $import api/api.txt
     .clear
     .print-letter "Now let's try background swiping"
 
-    .bgswipe "left", "right", 1000
+    .bgswipe! "left", "right", 1000
     .print-letter "Left to Right"
     .wait 1000
 
-    .bgswipe "top", "bottom", 1000
+    .bgswipe! "top", "bottom", 1000
     .print-letter "Top to Bottom"
     .wait 1000
     .continue "Let's go next!"
