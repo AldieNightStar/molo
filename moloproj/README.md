@@ -113,6 +113,12 @@ Hello there!
 // Wait 1000 milliseconds
 await wait(1000);
 
+// Set timeout while current scene is active
+_setTimeout(func, ms)
+
+// Set interval calls while current scene is active
+_setInterval(func, ms)
+
 // ============================================
 // PRINT
 // ============================================
