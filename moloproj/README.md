@@ -109,6 +109,10 @@ Hello there!
 ```
 == Wait for 1000 milliseconds
 .wait 1000
+
+== Wait for Music 10th second. "T0_10" means 0:10
+== Will not wait if music is not playing or 10 seconds is already passed
+.wait-music T0_10
 ```
 
 # JavaScript API
@@ -119,6 +123,10 @@ Hello there!
 
 // Wait 1000 milliseconds
 await wait(1000);
+
+// Wait for Music 10th second. "T0_10" means 0:10
+// Will not wait if music is not playing or 10 seconds is already passed
+await waitToMusicTime(T0_10);
 
 // Set timeout while current scene is active
 _setTimeout(func, ms)

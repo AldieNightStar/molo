@@ -33,7 +33,7 @@ function _fadeAdd(source, elem, transitionMS) {
         _setTimeout(() => {
             elem.style.opacity = "100%";
             _setTimeout(ok, transitionMS);
-        })
+        }, 1)
     })
 }
 
@@ -215,5 +215,21 @@ function bgZoom(size1, size2, transitionMS) {
 function wait(n) {
     return new Promise(ok => {
         _setTimeout(ok, n);
+    })
+}
+
+function waitToMusicTime(time) {
+    return new Promise(ok => {
+        if (music.paused || music.currentTime >= time) {
+            ok();
+            return;
+        }
+        let interval = 0;
+        interval = _setInterval(() => {
+            if (music.currentTime >= time) {
+                ok();
+                clearInterval(interval);
+            }
+        }, 1000);
     })
 }

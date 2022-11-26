@@ -46,7 +46,7 @@ function _fadeAdd(source, elem, transitionMS) {
         _setTimeout(() => {
             elem.style.opacity = "100%";
             _setTimeout(ok, transitionMS);
-        })
+        }, 1)
     })
 }
 
@@ -230,6 +230,22 @@ function wait(n) {
         _setTimeout(ok, n);
     })
 }
+
+function waitToMusicTime(time) {
+    return new Promise(ok => {
+        if (music.paused || music.currentTime >= time) {
+            ok();
+            return;
+        }
+        let interval = 0;
+        interval = _setInterval(() => {
+            if (music.currentTime >= time) {
+                ok();
+                clearInterval(interval);
+            }
+        }, 1000);
+    })
+}
 // Here you can have custom functions
 // window.mvars['variable'] - is a global molo variable (can be saved)
 // window.mscenes['scene']   - is a global molo scene function reference
@@ -246,7 +262,7 @@ mscenes[`myalert`] = async function() {
 mscenes[`main`] = async function() {
     bgImage("res/bg.jpg");
     await bgZoom(2, 1, 1000);
-    await printLetter("As you can see bg image changed. '.bg' command doing that");
+    await mprint(`As you can see bg image changed. '.bg' command doing that`);
     await printLetter("Look closer");
     bgScale(2, 2);
     bgPosisition("left");
@@ -265,7 +281,16 @@ mscenes[`main`] = async function() {
     await bgSwipe("top", "bottom", 1000);
     await printLetter("Top to Bottom");
     await wait(1000);
-    await printContinue("Let's go next");
+    await printContinue("Let's go next!");
+    await mprint(`Let's play some music`);
+    playMusic("res/music.ogg", 0.2);
+    await printLetter("We will wait to 5th second of that beautiful music", 500);
+    await waitToMusicTime(5);
+    await printLetter("Good. We have done now");
+    await wait(3000);
+    await printContinue("Let's go next!");
+    stopMusic();
+    mclear();
     await printLetter("Hi all and everything which am added to be it here", 3000);
     await printContinue("Let's start with a new story");
     await printContinue("Write your new world with Molo");
