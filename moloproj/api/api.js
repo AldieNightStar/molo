@@ -158,3 +158,8 @@ function fontColor(color) {
     }
     return document.body.style.color ? document.body.style.color : "white";
 }
+
+function bgImage(src) {
+    document.body.style['background-image'] = 'linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("' + src + '")';
+    document.body.style['background-size'] = "100% " + window.innerHeight + "px";
+}

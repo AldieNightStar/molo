@@ -18,8 +18,8 @@ Hello there!
 ```
 * Play music/sound (`0.5` means half a volume)
 ```
-.music "audio.mp3", 0.5
-.sound "effect1.wav", 0.5
+.music "res/audio.mp3", 0.5
+.sound "res/effect1.wav", 0.5
 ```
 * Stop music/sound
 ```
@@ -29,13 +29,13 @@ Hello there!
 * Add image (`100` is percents)
 ```
 == Add image with 100% width and height
-.image "image.png", 100, 100
+.image "res/image.png", 100, 100
 
 == Add image with 100% width but 50% height
-.image "image.png", 100, 50
+.image "res/image.png", 100, 50
 
 == Add image with 20% size (width and height)
-.image "image.png", 20
+.image "res/image.png", 20
 ```
 * Prints text that waits for the button to be pressed
 ```
@@ -64,6 +64,10 @@ Hello there!
 
 # JavaScript API
 ```js
+// ============================================
+// PRINT
+// ============================================
+
 // Print text with nextline
 await mprint(text);
 
@@ -82,6 +86,10 @@ await printContinue(text)
 // Clear the scene and timers
 mclear();
 
+// ============================================
+// BUTTON
+// ============================================
+
 // Add simple button (No scene changing or refreshing)
 let b = await button(caption, onclick);
 
@@ -96,8 +104,16 @@ let b = await buttonX(caption, sceneName, () => $$score += 1);
 //   0   null   ""
 let b = await buttonX(caption, "", () => $$score += 1);
 
+// ============================================
+// IMAGE
+// ============================================
+
 // Add image (width/height in percents)
 await addImage(src, width, height=width);
+
+// ============================================
+// MUSIC / SOUND
+// ============================================
 
 // Play music
 playMusic(src, volume=0.5);
@@ -111,9 +127,9 @@ playSound(src, vol=.5);
 // Stop the sound
 stopSound();
 
-// ================================
-// Colors
-// ================================
+// ============================================
+// COLORS
+// ============================================
 
 // Set Background color
 bgColor(color);
@@ -129,4 +145,11 @@ let color = fontColor();
 
 // Default background color
 defaultColor
+
+// ============================================
+// BACKGROUND
+// ============================================
+
+// Set background image
+bgImage("res/background.jpg")
 ```

@@ -172,13 +172,21 @@ function fontColor(color) {
     return document.body.style.color ? document.body.style.color : "white";
 }
 
+function bgImage(src) {
+    document.body.style['background-image'] = 'linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("' + src + '")';
+    document.body.style['background-size'] = "100% " + window.innerHeight + "px";
+}
 mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
-    await addImage("logo.png", 100, 20);
+    await addImage("res/logo.png", 100, 20);
     await printLetter("This is your story");
     await printContinue("Let's start");
+    mclear();
+    bgImage("res/bg.jpg");
+    await printLetter("As you can see bg image changed. '.bg' command doing that");
+    await printContinue("Let's go next");
     await printLetter("Hi all and everything which am added to be it here", 3000);
     await printContinue("Let's start with a new story");
     await printContinue("Write your new world with Molo");

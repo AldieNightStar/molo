@@ -6,9 +6,15 @@ $import api/api.txt
 == Main chapter
 :main
     == Let's print some logo to the screen with 100% and 20%
-    .image "logo.png", 100, 20
+    .image "res/logo.png", 100, 20
     .print-letter "This is your story"
     .continue "Let's start"
+
+    == Now i am changing bg image
+    .clear
+    .bg "res/bg.jpg"
+    .print-letter "As you can see bg image changed. '.bg' command doing that"
+    .continue "Let's go next"
 
     == This text will wait for continue button
     .print-letter "Hi all and everything which am added to be it here", 3000

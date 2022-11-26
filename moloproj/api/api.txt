@@ -38,3 +38,6 @@ $register колір-фону bgColor($$);
 $register fontcolor fontColor($$);
 $register цвет-текста fontColor($$);
 $register колір-тексту fontColor($$);
+
+$register bg bgImage($$);
+$register фон bgImage($$);
