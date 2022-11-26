@@ -10,7 +10,7 @@ def processVariables(line: str) -> str:
     line = replaceScenes(line)
     # Replace variables: @@a to window.mvars['a']
     line = replaceVars(line)
-    # Process time lines T1.25 to 85 (Convert time representation string to number)
+    # Process time lines T1_25 to 85 (Convert time representation string to number)
     line = replaceTime(line)
     return line
 
