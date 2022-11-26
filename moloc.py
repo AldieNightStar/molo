@@ -12,40 +12,50 @@ CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 # Ensure script will use local packages
 sys.path.insert(0, CURRENT_DIR)
 
-USAGE = """moloc.py [filename] [auto]
-    moloc.py filename auto  - rebuild file every 5 seconds
-    moloc.py filename       - build file
-    moloc.py new name       - create project based on moloproj template
+USAGE = """moloc.py [filename] [outfilename] [auto]
+    moloc.py filename outfilename auto  - rebuild file every 5 seconds
+    moloc.py filename outfilename       - build file
+    moloc.py new name                   - create project based on moloproj template
 """
 
-def auto(filename):
+def auto(filename, outname):
     while True:
         print("Rebuild...")
-        buildFile(filename)
+        buildFile(filename, outname)
         sleep(5)
 
-def buildFile(filename):
+def buildFile(filename, outname=None):
     chapters, _ = compile(filename)
-    with io.open(filename + ".js", 'w', encoding="UTF-8") as f:
+    if outname == None: outname = filename + ".js"
+    with io.open(outname, 'w', encoding="UTF-8") as f:
         f.write(chapters)
 
 def buildProj(name):
     shutil.copytree(CURRENT_DIR+"/moloproj", "./"+name)
 
 def main():
-    args = sys.argv[1:]
-    if len(args) < 1:
-        print(USAGE)
-        return
-    filename = args[0]
-    if filename == "new":
-        buildProj(args[1])
+    argIter = iter(sys.argv[1:])
+    firstArg = next(argIter, None)
+    if firstArg == None: print(USAGE); return
+    if firstArg == "new":
+        projname = next(argIter, None)
+        if projname == None: print(USAGE); return
+        buildProj(argIter[1])
         print("OK")
         return
-    if "auto" in args:
-        auto(filename)
+    # If first args is file name
+    filename = firstArg
+    outfile = next(argIter, None)
+    if outfile == None: print(USAGE); return
+    
+    isAuto = next(argIter, "") == "auto"
+    if not os.path.isfile(filename):
+        print(f"ERR: File \"{filename}\" not exists")
+        return
+    if isAuto:
+        auto(filename, outfile)
     else:
-        buildFile(filename)
+        buildFile(filename, outfile)
         print("OK")
 
 if __name__ == "__main__": main()

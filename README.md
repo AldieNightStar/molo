@@ -6,8 +6,8 @@
     * Make sure `moloc.py` in your `PATH` environment variable
     * On Windows use git-bash or something like that
     * Use `moloc.py` as compiler
-        * `moloc.py story.txt`
-        * `moloc.py story.txt auto`
+        * `moloc.py story.txt story.js`
+        * `moloc.py story.txt story.js auto`
     * `moloc.py new name` - Create new project (Copy from `moloproj` template)
 * Usage
     * Run `build.sh` and begin to edit your `story.txt` file.
