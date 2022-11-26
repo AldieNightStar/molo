@@ -28,7 +28,14 @@ Hello there!
 ```
 * Add image (`100` is percents)
 ```
-.image "image.png", 100
+== Add image with 100% width and height
+.image "image.png", 100, 100
+
+== Add image with 100% width but 50% height
+.image "image.png", 100, 50
+
+== Add image with 20% size (width and height)
+.image "image.png", 20
 ```
 * Prints text that waits for the button to be pressed
 ```
@@ -82,8 +89,8 @@ let b = await buttonX(caption, sceneName, () => $$score += 1);
 //   0   null   ""
 let b = await buttonX(caption, "", () => $$score += 1);
 
-// Add image (width in percents)
-addImage(src, width);
+// Add image (width/height in percents)
+addImage(src, width, height=width);
 
 // Play music
 playMusic(src, volume=0.5);

@@ -5,6 +5,11 @@ $import api/api.txt
 
 == Main chapter
 :main
+    == Let's print some logo to the screen with 100% and 20%
+    .image "logo.png", 100, 20
+    .print-letter "This is your story"
+    .continue "Let's start"
+
     == This text will wait for continue button
     .print-letter "Hi all and everything which am added to be it here", 3000
     .continue "Let's start with a new story"

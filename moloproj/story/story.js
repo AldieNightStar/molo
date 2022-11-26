@@ -17,6 +17,10 @@ window.sound = new Audio();
 window._timers = [];
 window.textTransition = 1000;
 
+function percentOf(num, percent) {
+    return (num / 100) * percent
+}
+
 function _setTimeout(cb, time) {
     let t = setTimeout(cb, time);
     window._timers.push(t);
@@ -59,7 +63,7 @@ function mprint(text, nextLine=true, transition=window.textTransition) {
 }
 
 async function printContinue(text) {
-    mprint(text, false);
+    await mprint(text, false);
     return new Promise(async ok => {
         let b = await button(">>", () => {
             ok();
@@ -109,13 +113,15 @@ async function buttonX(name, sceneToGo, func = ()=>{}) {
     return await button(name, () => { func(); mgoto(sceneToGo); });
 }
 
-function addImage(src, size) {
+function addImage(src, sizew=100, sizeh=sizew) {
     let img = document.createElement("img");
     let br = document.createElement("br");
     img.src = src;
-    if (size !== undefined) {
-        img.style.width = "" + size + "%";
-    }
+
+    // Set width/height in percents
+    img.style.width = "" + sizew + "%"; // This line no need to calculate
+    img.style.height = "" + percentOf(window.innerHeight, sizeh) + "px";
+
     let text = document.getElementById("text");
     text.appendChild(img);
     text.appendChild(br);
@@ -169,6 +175,9 @@ mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
+    addImage("logo.png", 100, 20);
+    await printLetter("This is your story");
+    await printContinue("Let's start");
     await printLetter("Hi all and everything which am added to be it here", 3000);
     await printContinue("Let's start with a new story");
     await printContinue("Write your new world with Molo");
