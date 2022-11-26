@@ -76,3 +76,6 @@ $register фон-зум! bgZoom($$);
 $register wait-music await waitToMusicTime($$);
 $register ждать-музыку await waitToMusicTime($$);
 $register ждать-музику await waitToMusicTime($$);
+
+$register title await title($$);
+$register титул await title($$);

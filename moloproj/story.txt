@@ -5,6 +5,7 @@ $import api/api.txt
 
 == Main chapter
 :main
+    .title "Small story"
     == Now i am changing bg image
     .bg "res/bg.jpg"
     .bgzoom 2, 1, 1000

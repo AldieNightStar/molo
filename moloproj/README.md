@@ -50,6 +50,9 @@ Hello there!
 ```
 * Print
 ```
+== Print big text (TITLE)
+.title "I am biggest"
+
 == Print and wait for a key press to continue
 .continue "Hello there"
 
@@ -148,13 +151,16 @@ await mprint(text, false);
 await mprint(text, true, 1000);
 
 // Print text with letter by letter for ms time
-await printLetter(text, ms, nextLine=true)
+await printLetter(text, ms, nextLine=true);
 
 // Print text and wait for key press
-await printContinue(text)
+await printContinue(text);
 
 // Clear the scene and timers
 mclear();
+
+// Print title text
+await title("I am big");
 
 // ============================================
 // BUTTON
@@ -228,21 +234,21 @@ bgImage("res/background.jpg");
 bgImage("");
 
 // Set background scale (default: 1, 1)
-bgScale(scaleX, scaleY)
+bgScale(scaleX, scaleY);
 
 // Set background transition speed in ms
-bgTransition(1000)
+bgTransition(1000);
 
 // Background position (Better with scale: 2, 2)
-bgPosition("left top")
-bgPosition("right top")
-bgPosition("left bottom")
-bgPosition("right bottom")
-bgPosition("top")
-bgPosition("bottom")
-bgPosition("left")
-bgPosition("right")
-bgPosition("center")
+bgPosition("left top");
+bgPosition("right top");
+bgPosition("left bottom");
+bgPosition("right bottom");
+bgPosition("top");
+bgPosition("bottom");
+bgPosition("left");
+bgPosition("right");
+bgPosition("center");
 
 // Swipe background from left to right side within 1000 milliseconds
 await bgSwipe("left", "right", 1000);

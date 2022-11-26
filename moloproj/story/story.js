@@ -246,6 +246,13 @@ function waitToMusicTime(time) {
         }, 1000);
     })
 }
+
+function title(text) {
+    let t = document.createElement("h1");
+    t.style.textAlign = "center";
+    t.innerHTML = text;
+    return _fadeAdd(document.getElementById('text'), t, textTransition);
+}
 // Here you can have custom functions
 // window.mvars['variable'] - is a global molo variable (can be saved)
 // window.mscenes['scene']   - is a global molo scene function reference
@@ -260,6 +267,7 @@ mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
+    await title("Small story");
     bgImage("res/bg.jpg");
     await bgZoom(2, 1, 1000);
     await mprint(`As you can see bg image changed. '.bg' command doing that`);

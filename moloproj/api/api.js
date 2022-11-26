@@ -233,3 +233,10 @@ function waitToMusicTime(time) {
         }, 1000);
     })
 }
+
+function title(text) {
+    let t = document.createElement("h1");
+    t.style.textAlign = "center";
+    t.innerHTML = text;
+    return _fadeAdd(document.getElementById('text'), t, textTransition);
+}
