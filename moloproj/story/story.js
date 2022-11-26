@@ -230,6 +230,16 @@ function wait(n) {
         _setTimeout(ok, n);
     })
 }
+// Here you can have custom functions
+// window.mvars['variable'] - is a global molo variable (can be saved)
+// window.mscenes['scene']   - is a global molo scene function reference
+
+// Could be used with:             * my_api("HaxiDenti")
+// Or you can register that with:  $register myapi my_api($$);
+// And use it then as:             .myapi "HaxiDenti"
+function my_api(name) {
+    console.log(`Hello ${name} from my API`);
+}
 mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
