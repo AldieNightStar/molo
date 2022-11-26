@@ -12,7 +12,7 @@
 * Usage
     * Run `build.sh` and begin to edit your `story.txt` file.
     * To test run `index.html` for your story
-* [[Write your first chapter|FIRST_STORY]]
+* [[Write your first chapter | FIRST_STORY]]
 
 # Release your novel
 * Use files in `story` folder to publish
