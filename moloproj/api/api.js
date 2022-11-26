@@ -115,6 +115,14 @@ function addImage(src, sizew=100, sizeh=sizew) {
     return promise;
 }
 
+function addImageCenter(src) {
+    let img = document.createElement("img");
+    img.src = src;
+    img.className = "centered";
+    let text = document.getElementById("text");
+    return _fadeAdd(text, img, window.textTransition);
+}
+
 function playMusic(src, vol=.5) {
     if (music.last_src === src && !music.paused) return;
     music.src = src;

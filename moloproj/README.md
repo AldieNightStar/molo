@@ -36,6 +36,9 @@ Hello there!
 
 == Add image with 20% size (width and height)
 .image "res/image.png", 20
+
+== Add image in the center (Width always will be 50%)
+.image-center "res/image.png", 20
 ```
 * Colors
 ```
@@ -186,6 +189,9 @@ let b = await buttonX(caption, "", () => $$score += 1);
 
 // Add image (width/height in percents)
 await addImage(src, width, height=width);
+
+// Add image in the center
+await addImageCenter(src);
 
 // ============================================
 // MUSIC / SOUND

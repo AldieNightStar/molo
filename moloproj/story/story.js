@@ -128,6 +128,14 @@ function addImage(src, sizew=100, sizeh=sizew) {
     return promise;
 }
 
+function addImageCenter(src) {
+    let img = document.createElement("img");
+    img.src = src;
+    img.className = "centered";
+    let text = document.getElementById("text");
+    return _fadeAdd(text, img, window.textTransition);
+}
+
 function playMusic(src, vol=.5) {
     if (music.last_src === src && !music.paused) return;
     music.src = src;
@@ -253,21 +261,12 @@ function title(text) {
     t.innerHTML = text;
     return _fadeAdd(document.getElementById('text'), t, textTransition);
 }
-// Here you can have custom functions
-// window.mvars['variable'] - is a global molo variable (can be saved)
-// window.mscenes['scene']   - is a global molo scene function reference
-
-// Could be used with:             * my_api("HaxiDenti")
-// Or you can register that with:  $register myapi my_api($$);
-// And use it then as:             .myapi "HaxiDenti"
-function my_api(name) {
-    console.log(`Hello ${name} from my API`);
-}
 mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
     await title("Small story");
+    addImageCenter("res/divider.png");
     bgImage("res/bg.jpg");
     await bgZoom(2, 1, 1000);
     await mprint(`As you can see bg image changed. '.bg' command doing that`);

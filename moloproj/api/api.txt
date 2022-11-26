@@ -1,5 +1,5 @@
 $js api/api.js
-$js api/custom.js
+$import api/custom.txt
 
 $register clear mclear($$);
 $register чисто mclear($$);
@@ -79,3 +79,6 @@ $register ждать-музику await waitToMusicTime($$);
 
 $register title await title($$);
 $register титул await title($$);
+
+$register image-center addImageCenter($$);
+$register картинка-центр addImageCenter($$);

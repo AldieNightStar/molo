@@ -1,0 +1,3 @@
+$js api/custom.js
+
+== Put your custom register api here
