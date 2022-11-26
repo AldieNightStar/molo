@@ -7,6 +7,7 @@ $import api/api.txt
 :main
     == Now i am changing bg image
     .bg "res/bg.jpg"
+    .bgzoom 2, 1, 1000
     .print-letter "As you can see bg image changed. '.bg' command doing that"
     .print-letter "Look closer"
     .bgscale 2, 2

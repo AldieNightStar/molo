@@ -209,6 +209,22 @@ function bgSwipe(pos1, pos2, transitionMS) {
     })
 }
 
+function bgZoom(size1, size2, transitionMS) {
+    return new Promise(ok => {
+        bgTransition(0);
+        bgScale(size1, size1);
+        bgPosisition("center");
+
+        _setTimeout(ok, transitionMS);
+    
+        _setTimeout(() => {
+            bgScale(size2, size2);
+            bgTransition(transitionMS - transitionMS * .1)
+            bgPosisition("center")
+        }, transitionMS * .1)
+    })
+}
+
 function wait(n) {
     return new Promise(ok => {
         _setTimeout(ok, n);
@@ -219,6 +235,7 @@ mscenes[`myalert`] = async function() {
 };
 mscenes[`main`] = async function() {
     bgImage("res/bg.jpg");
+    await bgZoom(2, 1, 1000);
     await printLetter("As you can see bg image changed. '.bg' command doing that");
     await printLetter("Look closer");
     bgScale(2, 2);

@@ -91,6 +91,12 @@ Hello there!
 
 == Set background swipe from left to right within 1000 ms
 .bgswipe "left", "right", 1000
+
+== Zoom out withing 1000 ms
+.bgzoom 2, 1, 1000
+
+== Zoom in within 1000 ms
+.bgzoom 1, 2, 1000
 ```
 * Timing
 ```
@@ -216,4 +222,10 @@ bgPosition("center")
 
 // Swipe background from left to right side within 1000 milliseconds
 await bgSwipe("left", "right", 1000);
+
+// Zoom out withing 1000 ms
+await bgZoom(2, 1, 1000);
+
+// Zoom in within 1000 ms
+await bgZoom(1, 2, 1000);
 ```
