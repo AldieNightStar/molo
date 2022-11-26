@@ -49,8 +49,12 @@ Hello there!
 == Font color
 .fontcolor "yellow"
 ```
-* Print by letters (1000 is milliseconds)
+* Print
 ```
+== Print and wait for a key press to continue
+.continue "Hello there"
+
+== Print letter by letter (1000 is time in milliseconds)
 .print-letter "Hello there", 1000
 ```
 * Clear everything on the screen
@@ -71,6 +75,9 @@ await mprint(text, true, 1000);
 
 // Print text with letter by letter for ms time
 await printLetter(text, ms, nextLine=true)
+
+// Print text and wait for key press
+await printContinue(text)
 
 // Clear the scene and timers
 mclear();
