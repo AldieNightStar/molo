@@ -194,6 +194,21 @@ function bgScale(scaleX, scaleY) {
     document.body.style['background-size'] = (window.innerWidth * scaleX) + "px " + (window.innerHeight * scaleY) + "px";
 }
 
+function bgSwipe(pos1, pos2, transitionMS) {
+    return new Promise(ok => {
+        bgTransition(0);
+        bgScale(2, 2);
+        bgPosisition(pos1);
+
+        _setTimeout(ok, transitionMS);
+    
+        _setTimeout(() => {
+            bgTransition(transitionMS - transitionMS * .1)
+            bgPosisition(pos2)
+        }, transitionMS * .1)
+    })
+}
+
 function wait(n) {
     return new Promise(ok => {
         _setTimeout(ok, n);
@@ -203,22 +218,26 @@ mscenes[`myalert`] = async function() {
     window.alert("Hello from alert scene. I am used as function");
 };
 mscenes[`main`] = async function() {
-    await addImage("res/logo.png", 100, 20);
-    await printLetter("This is your story");
-    await printContinue("Let's start");
-    mclear();
     bgImage("res/bg.jpg");
     await printLetter("As you can see bg image changed. '.bg' command doing that");
     await printLetter("Look closer");
     bgScale(2, 2);
-    await printLetter("Left side", 1000);
     bgPosisition("left");
-    await printLetter("Or right side", 1000);
+    await printLetter("Left side", 1000);
     bgPosisition("right");
+    await printLetter("Right side", 1000);
     await wait(1000);
     bgPosisition("center");
     bgScale(1, 1);
     await printLetter("We done with background!");
+    mclear();
+    await printLetter("Now let's try background swiping");
+    await bgSwipe("left", "right", 1000);
+    await printLetter("Left to Right");
+    await wait(1000);
+    await bgSwipe("top", "bottom", 1000);
+    await printLetter("Top to Bottom");
+    await wait(1000);
     await printContinue("Let's go next");
     await printLetter("Hi all and everything which am added to be it here", 3000);
     await printContinue("Let's start with a new story");

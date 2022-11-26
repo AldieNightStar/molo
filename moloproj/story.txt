@@ -5,13 +5,7 @@ $import api/api.txt
 
 == Main chapter
 :main
-    == Let's print some logo to the screen with 100% and 20%
-    .image "res/logo.png", 100, 20
-    .print-letter "This is your story"
-    .continue "Let's start"
-
     == Now i am changing bg image
-    .clear
     .bg "res/bg.jpg"
     .print-letter "As you can see bg image changed. '.bg' command doing that"
     .print-letter "Look closer"
@@ -20,14 +14,26 @@ $import api/api.txt
     == Let's change positions of the background
     == To do so we use '.bgpos' and '.bgscale'
     == To change the speed we use '.bgtransition'
-    .print-letter "Left side", 1000
     .bgpos "left"
-    .print-letter "Or right side", 1000
+    .print-letter "Left side", 1000
     .bgpos "right"
+    .print-letter "Right side", 1000
     .wait 1000
     .bgpos "center"
     .bgscale 1, 1
     .print-letter "We done with background!"
+
+    == Now let's swipe couple of times
+    .clear
+    .print-letter "Now let's try background swiping"
+
+    .bgswipe "left", "right", 1000
+    .print-letter "Left to Right"
+    .wait 1000
+
+    .bgswipe "top", "bottom", 1000
+    .print-letter "Top to Bottom"
+    .wait 1000
     
     .continue "Let's go next"
 

@@ -181,6 +181,21 @@ function bgScale(scaleX, scaleY) {
     document.body.style['background-size'] = (window.innerWidth * scaleX) + "px " + (window.innerHeight * scaleY) + "px";
 }
 
+function bgSwipe(pos1, pos2, transitionMS) {
+    return new Promise(ok => {
+        bgTransition(0);
+        bgScale(2, 2);
+        bgPosisition(pos1);
+
+        _setTimeout(ok, transitionMS);
+    
+        _setTimeout(() => {
+            bgTransition(transitionMS - transitionMS * .1)
+            bgPosisition(pos2)
+        }, transitionMS * .1)
+    })
+}
+
 function wait(n) {
     return new Promise(ok => {
         _setTimeout(ok, n);

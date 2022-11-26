@@ -57,3 +57,7 @@ $register фон-розмір bgScale($$);
 $register wait await wait($$);
 $register ждать await wait($$);
 $register чекати await wait($$);
+
+$register bgswipe await bgSwipe($$);
+$register фон-двигать await bgSwipe($$); 
+$register фон-рухати await bgSwipe($$);

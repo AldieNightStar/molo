@@ -88,6 +88,9 @@ Hello there!
 
 == Set background transition speed in ms
 .bgtransition 1000
+
+== Set background swipe from left to right within 1000 ms
+.bgswipe "left", "right", 1000
 ```
 * Timing
 ```
@@ -210,4 +213,7 @@ bgPosition("bottom")
 bgPosition("left")
 bgPosition("right")
 bgPosition("center")
+
+// Swipe background from left to right side within 1000 milliseconds
+await bgSwipe("left", "right", 1000);
 ```
