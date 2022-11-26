@@ -91,7 +91,7 @@ async function button(name, onclick) {
     let b = document.createElement("button");
     b.innerText = name;
     b.onclick = onclick;
-    await _fadeAdd(el, b, 100);
+    await _fadeAdd(el, b, 50);
     return b;
 }
 
