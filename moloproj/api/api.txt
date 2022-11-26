@@ -63,5 +63,12 @@ $register bgswipe await bgSwipe($$);
 $register фон-двигать await bgSwipe($$); 
 $register фон-рухати await bgSwipe($$);
 
+$register bgswipe! bgSwipe($$);
+$register фон-двигать! bgSwipe($$); 
+$register фон-рухати! bgSwipe($$);
+
 $register bgzoom await bgZoom($$);
 $register фон-зум await bgZoom($$);
+
+$register bgzoom! bgZoom($$);
+$register фон-зум! bgZoom($$);

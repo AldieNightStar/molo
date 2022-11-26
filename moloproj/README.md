@@ -93,13 +93,17 @@ Hello there!
 .bgtransition 1000
 
 == Set background swipe from left to right within 1000 ms
+== .bgswipe! - will not wait until end of animation
 .bgswipe "left", "right", 1000
 
 == Zoom out withing 1000 ms
+== .bgzoom! - will not wait until end of animation
 .bgzoom 2, 1, 1000
 
 == Zoom in within 1000 ms
+== .bgzoom! - will not wait until end of animation
 .bgzoom 1, 2, 1000
+
 ```
 * Timing
 ```
