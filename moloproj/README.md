@@ -1,12 +1,10 @@
 # Template `moloproj`
 
 # Commands
-* Just print text
 ```
-Hello there!
-```
-* Button
-```
+== ==============================
+== BUTTON
+== ==============================
 == Just add the button with goto operation
 .button "Go to scene2", "scene2"
 
@@ -15,9 +13,11 @@ Hello there!
 
 == Add the button with func and update operation
 .button "Do some stuff and update scene", "", () => {$$score += 1}
-```
-* Music/Sound operations
-```
+
+== ==============================
+== MUSIC / SOUND
+== ==============================
+
 == Play
 .music "res/audio.mp3", 0.5
 .sound "res/effect1.wav", 0.5
@@ -25,9 +25,11 @@ Hello there!
 == Stop
 .stopmusic
 .stopsound
-```
-* Add image (`100` is percents)
-```
+
+== ==============================
+== IMAGE
+== ==============================
+
 == Add image with 100% width and height
 .image "res/image.png", 100, 100
 
@@ -39,9 +41,11 @@ Hello there!
 
 == Add image in the center (Width always will be 50%)
 .image-center "res/image.png", 20
-```
-* Colors
-```
+
+== ==============================
+== COLORS
+== ==============================
+
 == Background color
 .bgcolor "black"
 
@@ -50,9 +54,11 @@ Hello there!
 
 == Font color
 .fontcolor "yellow"
-```
-* Print
-```
+
+== ==============================
+== PRINT
+== ==============================
+
 == Print big text (TITLE)
 .title "I am biggest"
 
@@ -65,13 +71,14 @@ Hello there!
 == Print text with button
 == To continue need to press that button
 .continue "This is awaiten text"
-```
-* Clear everything on the screen
-```
+
+== Clear everything
 .clear
-```
-* Background Operations
-```
+
+== ==============================
+== BACKGROUND OPS
+== ==============================
+
 == Set the background picture
 .bg "res/back"
 
@@ -110,9 +117,10 @@ Hello there!
 == .bgzoom! - will not wait until end of animation
 .bgzoom 1, 2, 1000
 
-```
-* Timing
-```
+== ==============================
+== TIMINGS
+== ==============================
+
 == Wait for 1000 milliseconds
 .wait 1000
 
