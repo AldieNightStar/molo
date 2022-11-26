@@ -14,12 +14,8 @@
     * To test run `index.html` for your story
 
 # Release your novel
-* Delete files:
-    * `build.sh` file
-    * `README.md` file
-    * `story.txt` file
-    * `api` folder
-* Publish to a web server
+* Use files in `story` folder to publish
+* Also put resource files there as well. Pictures, music, etc
 
 # Language
 
