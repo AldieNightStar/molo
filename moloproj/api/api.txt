@@ -4,8 +4,8 @@ $import api/custom.txt
 $register clear mclear($$);
 $register чисто mclear($$);
 
-$register button await buttonX($$);
-$register кнопка await buttonX($$);
+$register button buttonX($$);
+$register кнопка buttonX($$);
 
 $register image await addImage($$);
 $register картинка await addImage($$);
@@ -82,3 +82,6 @@ $register титул await title($$);
 
 $register image-center addImageCenter($$);
 $register картинка-центр addImageCenter($$);
+
+$register goto mgoto($$);
+$register перейти mgoto($$);

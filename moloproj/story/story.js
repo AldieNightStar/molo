@@ -40,7 +40,7 @@ function _clearTimers() {
 }
 
 function _fadeAdd(source, elem, transitionMS) {
-    if (transitionMS < 100) transitionMS = 100;
+    if (transitionMS < 50) transitionMS = 50;
     elem.style.transition = transitionMS+"ms";
     elem.style.opacity = "0%";
     source.appendChild(elem);
@@ -105,18 +105,18 @@ function mclear() {
     }, 100);
 }
 
-async function button(name, onclick) {
+function button(name, onclick) {
     let el = document.getElementById("text");
     let b = document.createElement("button");
     b.innerText = name;
     b.onclick = onclick;
-    await _fadeAdd(el, b, 50);
+    el.appendChild(b);
     return b;
 }
 
-async function buttonX(name, sceneToGo, func = ()=>{}) {
+function buttonX(name, sceneToGo, func = ()=>{}) {
     if (sceneToGo === "" || sceneToGo === 0 || sceneToGo === null) sceneToGo = mscene_cur
-    return await button(name, () => { func(); mgoto(sceneToGo); });
+    return button(name, () => { func(); mgoto(sceneToGo); });
 }
 
 function addImage(src, sizew=100, sizeh=sizew) {

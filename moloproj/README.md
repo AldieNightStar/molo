@@ -123,6 +123,13 @@
 == Wait for Music 10th second. "T0_10" means 0:10
 == Will not wait if music is not playing or 10 seconds is already passed
 .wait-music T0_10
+
+== ==============================
+== SCENES
+== ==============================
+
+== Go to another scene
+.goto "scene1"
 ```
 
 # JavaScript API
@@ -174,17 +181,15 @@ await title("I am big");
 // ============================================
 
 // Add simple button (No scene changing or refreshing)
-let b = await button(caption, onclick);
+let b = button(caption, onclick);
 
 // Add button with only goto operation
-let b = await buttonX(caption, sceneName);
+let b = buttonX(caption, sceneName);
 
 // Add button with goto operation AND function before goto
-let b = await buttonX(caption, sceneName, () => $$score += 1);
+let b = buttonX(caption, sceneName, () => $$score += 1);
 
 // Add button which just update current scene with function
-// Just instead of name - use one off:
-//   0   null   ""
 let b = await buttonX(caption, "", () => $$score += 1);
 
 // ============================================
@@ -268,4 +273,11 @@ await bgZoom(2, 1, 1000);
 
 // Zoom in within 1000 ms
 await bgZoom(1, 2, 1000);
+
+// ============================================
+// SCENES
+// ============================================
+
+// Go to another scene
+mgoto("scene1");
 ```
