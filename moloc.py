@@ -40,7 +40,7 @@ def main():
     if firstArg == "new":
         projname = next(argIter, None)
         if projname == None: print(USAGE); return
-        buildProj(argIter[1])
+        buildProj(projname)
         print("OK")
         return
     # If first args is file name
